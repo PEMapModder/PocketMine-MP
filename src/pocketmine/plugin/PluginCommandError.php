@@ -24,7 +24,7 @@ namespace pocketmine\plugin;
 use pocketmine\command\CommandSender;
 use pocketmine\command\PluginIdentifiableCommand;
 
-class PluginCommandError implements PluginError{
+class PluginCommandError extends PluginError{
 
 	/** @var \Exception */
 	private $exception;

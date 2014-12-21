@@ -54,7 +54,6 @@ interface Plugin extends CommandExecutor{
 	/**
 	 * Called when the plugin throws/triggers an exception during execution of commands, events or scheduled tasks before the exception is logged.
 	 * @param PluginError $error
-	 * @return bool whether the exception is consumed. If the error is consumed (handled, like events cancelled), PocketMine will not log the exception.
 	 */
 	public function onError(PluginError $error);
 

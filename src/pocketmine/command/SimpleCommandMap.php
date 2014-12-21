@@ -186,13 +186,13 @@ class SimpleCommandMap implements CommandMap{
 			if($target instanceof PluginIdentifiableCommand){
 				$plugin = $target->getPlugin();
 				try{
-					$consumed = $plugin->onError(new PluginCommandError($e, $sender, $target, $sentCommandLabel, $args));
+					$plugin->onError($err = new PluginCommandError($e, $sender, $target, $sentCommandLabel, $args));
 				}catch(\Exception $e2){
-					$consumed = false;
+					unset($err);
 				}
 			}
 
-			if(!isset($consumed) or $consumed !== true){
+			if(!isset($err) or !$err->isConsumed()){
 				$this->server->getLogger()->critical("Unhandled exception executing command '" . $commandLine . "' in " . $target . ": " . $e->getMessage());
 				if(($logger = $sender->getServer()->getLogger()) instanceof MainLogger){
 					$logger->logException($e);

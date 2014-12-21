@@ -23,7 +23,7 @@ namespace pocketmine\plugin;
 
 use pocketmine\scheduler\PluginTask;
 
-class PluginScheduleError implements PluginError{
+class PluginScheduleError extends PluginError{
 	private $ex;
 	private $task;
 	public function __construct(\Exception $ex, PluginTask $task){

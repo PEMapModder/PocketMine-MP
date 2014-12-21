@@ -99,10 +99,9 @@ abstract class PluginBase implements Plugin{
 
 	/**
 	 * @param PluginError $error
-	 * @return bool
 	 */
 	public function onError(PluginError $error){
-		return false;
+
 	}
 
 	public final function getDataFolder(){

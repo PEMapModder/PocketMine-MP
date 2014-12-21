@@ -242,13 +242,13 @@ class ServerScheduler{
 					if($task instanceof PluginTask){
 						$plugin = $task->getOwner();
 						try{
-							$consumed = $plugin->onError(new PluginScheduleError($e, $task));
+							$plugin->onError($err = new PluginScheduleError($e, $task));
 						}catch(\Exception $e2){
-							$consumed = false;
+							unset($err);
 						}
 					}
 
-					if(!isset($consumed) or !$consumed){
+					if(!isset($err) or !$err->isConsumed()){
 						$server->getLogger()->critical("Could not execute task " . $handler->getTaskName() . ": " . $e->getMessage());
 						if(($logger = $server->getLogger()) instanceof MainLogger){
 							$logger->logException($e);

@@ -23,7 +23,7 @@ namespace pocketmine\plugin;
 
 use pocketmine\event\Event;
 
-class PluginEventError implements PluginError{
+class PluginEventError extends PluginError{
 
 	/** @var \Exception */
 	private $ex;

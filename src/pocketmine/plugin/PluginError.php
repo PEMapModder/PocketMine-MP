@@ -21,11 +21,35 @@
 
 namespace pocketmine\plugin;
 
-interface PluginError{
+abstract class PluginError{
+
+	/** @var bool whether the exception is consumed. */
+	private $consumed = false;
 
 	/**
 	 * @return \Exception
 	 */
-	public function getException();
+	public abstract function getException();
+
+	/*
+	 * @return bool
+	 */
+	public function isConsumed(){
+		return $this->consumed;
+	}
+
+	/**
+	 * Consume the error. If an error is consumed, the exception will not be logged.
+	*/
+	public function consume(){
+		$this->consumed = true;
+	}
+
+	/**
+	 * Undo consume()
+	 */
+	public function unconsume(){
+		$this->consumed = false;
+	}
 
 }
