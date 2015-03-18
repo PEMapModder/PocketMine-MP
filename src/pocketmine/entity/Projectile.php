@@ -137,12 +137,12 @@ abstract class Projectile extends Entity{
 					$this->server->getPluginManager()->callEvent(new ProjectileHitEvent($this));
 
 					$motion = sqrt($this->motionX ** 2 + $this->motionY ** 2 + $this->motionZ ** 2);
-					$damage = [EntityDamageEvent::MODIFIER_BASE => ceil($motion * $this->damage)];
+					$damage = [EntityDamageEvent::MODIFIER_BASE => $base = ceil($motion * $this->damage)];
 					$hit = $movingObjectPosition->entityHit;
 					if($hit instanceof InventoryHolder){
 						$inventory = $hit->getInventory();
 						if($inventory instanceof PlayerInventory){
-							$damage[EntityDamageEvent::MODIFIER_ARMOR] = $inventory->getArmorPoints();
+							$damage[EntityDamageEvent::MODIFIER_ARMOR] = -floor($inventory->getArmorPoints() * 0.04 * $base);
 						}
 					}
 

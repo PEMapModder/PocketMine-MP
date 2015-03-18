@@ -64,7 +64,7 @@ class Fire extends Flowable{
 		if($entity instanceof InventoryHolder){
 			$inventory = $entity->getInventory();
 			if($inventory instanceof PlayerInventory){
-				$damage[EntityDamageEvent::MODIFIER_ARMOR] = $inventory->getArmorPoints();
+				$damage[EntityDamageEvent::MODIFIER_ARMOR] = -floor($inventory->getArmorPoints() * 0.04);
 			}
 		}
 		$ev = new EntityDamageByBlockEvent($this, $entity, EntityDamageEvent::CAUSE_FIRE, $damage);

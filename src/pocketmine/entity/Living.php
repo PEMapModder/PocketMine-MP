@@ -191,7 +191,7 @@ abstract class Living extends Entity implements Damageable{
 				if($this instanceof InventoryHolder){
 					$inventory = $this->getInventory();
 					if($inventory instanceof PlayerInventory){
-						$damage[EntityDamageEvent::MODIFIER_ARMOR] = $inventory->getArmorPoints();
+						$damage[EntityDamageEvent::MODIFIER_ARMOR] = -floor($inventory->getArmorPoints() * 0.08);
 					}
 				}
 				$ev = new EntityDamageEvent($this, EntityDamageEvent::CAUSE_DROWNING, $damage);

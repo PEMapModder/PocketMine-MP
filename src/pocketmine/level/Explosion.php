@@ -163,11 +163,11 @@ class Explosion{
 
 				$impact = (1 - $distance) * ($exposure = 1);
 
-				$damage = [EntityDamageEvent::MODIFIER_BASE => (int) ((($impact * $impact + $impact) / 2) * 8 * $explosionSize + 1)];
+				$damage = [EntityDamageEvent::MODIFIER_BASE => $base = (int) ((($impact * $impact + $impact) / 2) * 8 * $explosionSize + 1)];
 				if($entity instanceof InventoryHolder){
 					$inventory = $entity->getInventory();
 					if($inventory instanceof PlayerInventory){
-						$damage[EntityDamageEvent::MODIFIER_ARMOR] = $inventory->getArmorPoints();
+						$damage[EntityDamageEvent::MODIFIER_ARMOR] = -floor($inventory->getArmorPoints() * 0.04 * $base);
 					}
 				}
 

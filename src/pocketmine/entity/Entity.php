@@ -735,13 +735,13 @@ abstract class Entity extends Location implements Metadatable{
 	}
 
 	public function fall($fallDistance){
-		$damage = floor($fallDistance - 3);
-		if($damage > 0){
-			$damage = [EntityDamageEvent::MODIFIER_BASE => $damage];
+		$baseDamage = floor($fallDistance - 3);
+		if($baseDamage > 0){
+			$damage = [EntityDamageEvent::MODIFIER_BASE => $baseDamage];
 			if($this instanceof InventoryHolder){
 				$inventory = $this->getInventory();
 				if($inventory instanceof PlayerInventory){
-					$damage[EntityDamageEvent::MODIFIER_ARMOR] = $inventory->getArmorPoints();
+					$damage[EntityDamageEvent::MODIFIER_ARMOR] = -floor($inventory->getArmorPoints() * 0.04 * $baseDamage);
 				}
 			}
 			$ev = new EntityDamageEvent($this, EntityDamageEvent::CAUSE_FALL, $damage);
