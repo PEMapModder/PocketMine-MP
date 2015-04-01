@@ -53,7 +53,8 @@ class CallbackTask extends Task{
 	}
 
 	public function onRun($currentTicks){
-		call_user_func_array($this->callable, $this->args);
+		$c = $this->callable;
+		$c(...$this->args);
 	}
 
 }
