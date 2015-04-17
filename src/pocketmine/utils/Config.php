@@ -269,7 +269,7 @@ class Config{
 
 	/**
 	 * @param      $key
-	 * @param null $default
+	 * @param mixed $default
 	 *
 	 * @return mixed
 	 */
@@ -295,8 +295,8 @@ class Config{
 	}
 
 	/**
-	 * @param $k
-	 * @param $default
+	 * @param       $k
+	 * @param mixed $default
 	 *
 	 * @return boolean|mixed
 	 */
