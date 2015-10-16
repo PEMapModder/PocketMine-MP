@@ -27,7 +27,6 @@ use pocketmine\Player;
 
 class TallGrass extends Flowable{
 
-
 	public function __construct($meta = 1){
 		parent::__construct(self::TALL_GRASS, $meta);
 	}

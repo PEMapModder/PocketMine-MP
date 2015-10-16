@@ -30,7 +30,6 @@ use pocketmine\Server;
 
 class Mycelium extends Solid{
 
-
 	public function __construct(){
 		parent::__construct(self::MYCELIUM);
 	}

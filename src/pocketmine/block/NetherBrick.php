@@ -26,7 +26,6 @@ use pocketmine\item\Tool;
 
 class NetherBrick extends Solid{
 
-
 	public function __construct(){
 		parent::__construct(self::NETHER_BRICKS);
 	}

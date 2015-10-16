@@ -74,7 +74,6 @@ class Squid extends WaterAnimal implements Ageable{
 		return new Vector3(mt_rand(-1000, 1000) / 1000, mt_rand(-500, 500) / 1000, mt_rand(-1000, 1000) / 1000);
 	}
 
-
 	public function onUpdate($currentTick){
 //		if($this->closed !== false){
 //			return false;
@@ -143,7 +142,6 @@ class Squid extends WaterAnimal implements Ageable{
 //
 //		return $hasUpdate or !$this->onGround or abs($this->motionX) > 0.00001 or abs($this->motionY) > 0.00001 or abs($this->motionZ) > 0.00001;
 	}
-
 
 	public function spawnTo(Player $player){
 		$pk = new AddEntityPacket();

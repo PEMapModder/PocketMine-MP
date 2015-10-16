@@ -27,7 +27,6 @@ use pocketmine\Player;
 
 class RedMushroom extends Flowable{
 
-
 	public function __construct(){
 		parent::__construct(self::RED_MUSHROOM);
 	}

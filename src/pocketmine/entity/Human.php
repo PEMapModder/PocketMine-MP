@@ -50,7 +50,6 @@ class Human extends Creature implements ProjectileSource, InventoryHolder{
 	/** @var PlayerInventory */
 	protected $inventory;
 
-
 	/** @var UUID */
 	protected $uuid;
 	protected $rawUUID;

@@ -136,5 +136,4 @@ class OfflinePlayer implements IPlayer{
 		$this->server->getPlayerMetadata()->removeMetadata($this, $metadataKey, $plugin);
 	}
 
-
 }

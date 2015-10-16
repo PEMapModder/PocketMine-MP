@@ -68,5 +68,4 @@ class EntityTeleportEvent extends EntityEvent implements Cancellable{
 		$this->to = $to;
 	}
 
-
 }

@@ -38,7 +38,6 @@ class PlayerCommandPreprocessEvent extends PlayerEvent implements Cancellable{
 	/** @var string */
 	protected $message;
 
-
 	/**
 	 * @param Player $player
 	 * @param string $message

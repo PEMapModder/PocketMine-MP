@@ -38,7 +38,6 @@ class BlockPlaceEvent extends BlockEvent implements Cancellable{
 	/** @var \pocketmine\item\Item */
 	protected $item;
 
-
 	protected $blockReplace;
 	protected $blockAgainst;
 

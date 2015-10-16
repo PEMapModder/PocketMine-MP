@@ -32,7 +32,6 @@ use pocketmine\tile\Tile;
 
 class EnchantingTable extends Transparent{
 
-
 	public function __construct(){
 		parent::__construct(self::ENCHANTING_TABLE);
 	}

@@ -28,7 +28,6 @@ class EntityDamageByChildEntityEvent extends EntityDamageByEntityEvent{
 	/** @var Entity */
 	private $childEntity;
 
-
 	/**
 	 * @param Entity $damager
 	 * @param Entity $childEntity
@@ -47,6 +46,5 @@ class EntityDamageByChildEntityEvent extends EntityDamageByEntityEvent{
 	public function getChild(){
 		return $this->childEntity;
 	}
-
 
 }

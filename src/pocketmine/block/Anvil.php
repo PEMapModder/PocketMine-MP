@@ -28,7 +28,6 @@ use pocketmine\Player;
 
 class Anvil extends Fallable{
 
-
 	public function isSolid(){
 		return false;
 	}

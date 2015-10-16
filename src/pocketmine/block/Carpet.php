@@ -28,7 +28,6 @@ use pocketmine\Player;
 
 class Carpet extends Flowable{
 
-
 	public function __construct($meta = 0){
 		parent::__construct(self::CARPET, $meta);
 	}

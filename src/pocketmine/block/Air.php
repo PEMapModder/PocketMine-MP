@@ -28,7 +28,6 @@ use pocketmine\item\Item;
  */
 class Air extends Transparent{
 
-
 	public function __construct(){
 		parent::__construct(self::AIR);
 	}

@@ -655,7 +655,6 @@ class Server{
 		return round((array_sum($this->useAverage) / count($this->useAverage)) * 100, 2);
 	}
 
-
 	/**
 	 * @deprecated
 	 *
@@ -1780,7 +1779,6 @@ class Server{
 		}
 	}
 
-
 	/**
 	 * @param int $type
 	 */
@@ -2326,7 +2324,6 @@ class Server{
 		}
 		//TODO: add raw packet events
 	}
-
 
 	/**
 	 * Tries to execute a server tick

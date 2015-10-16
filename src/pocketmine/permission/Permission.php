@@ -168,7 +168,6 @@ class Permission{
 		}
 	}
 
-
 	/**
 	 * @param string|Permission $name
 	 * @param                   $value
@@ -251,6 +250,5 @@ class Permission{
 
 		return new Permission($name, $desc, $default, $children);
 	}
-
 
 }

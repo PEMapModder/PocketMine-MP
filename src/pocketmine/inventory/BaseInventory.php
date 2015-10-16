@@ -413,7 +413,6 @@ abstract class BaseInventory implements Inventory{
 		$this->sendSlot($index, $this->getViewers());
 	}
 
-
 	/**
 	 * @param Player|Player[] $target
 	 */

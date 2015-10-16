@@ -27,7 +27,6 @@ use pocketmine\Player;
 
 class Dirt extends Solid{
 
-
 	public function __construct(){
 		parent::__construct(self::DIRT);
 	}

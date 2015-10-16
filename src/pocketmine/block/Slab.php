@@ -28,7 +28,6 @@ use pocketmine\Player;
 
 class Slab extends Transparent{
 
-
 	public function __construct($meta = 0){
 		parent::__construct(self::SLAB, $meta);
 	}

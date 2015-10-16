@@ -43,5 +43,4 @@ class EntityMotionEvent extends EntityEvent implements Cancellable{
 		return $this->mot;
 	}
 
-
 }

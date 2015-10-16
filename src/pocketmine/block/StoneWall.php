@@ -27,7 +27,6 @@ use pocketmine\math\Vector3;
 
 class StoneWall extends Transparent{
 
-
 	public function __construct($meta = 0){
 		parent::__construct(self::STONE_WALL, $meta);
 	}

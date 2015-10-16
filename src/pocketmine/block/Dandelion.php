@@ -27,7 +27,6 @@ use pocketmine\Player;
 
 class Dandelion extends Flowable{
 
-
 	public function __construct(){
 		parent::__construct(self::DANDELION);
 	}

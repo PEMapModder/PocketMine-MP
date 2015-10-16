@@ -27,7 +27,6 @@ use pocketmine\math\AxisAlignedBB;
 
 class GrassPath extends Transparent{
 
-
 	public function __construct(){
 		parent::__construct(self::GRASS_PATH);
 	}

@@ -26,7 +26,6 @@ use pocketmine\math\AxisAlignedBB;
 
 class SoulSand extends Solid{
 
-
 	public function __construct(){
 		parent::__construct(self::SOUL_SAND);
 	}

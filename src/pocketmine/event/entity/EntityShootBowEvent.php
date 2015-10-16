@@ -98,5 +98,4 @@ class EntityShootBowEvent extends EntityEvent implements Cancellable{
 		$this->force = $force;
 	}
 
-
 }

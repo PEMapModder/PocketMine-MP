@@ -50,7 +50,6 @@ interface FullChunk{
 	 */
 	public function setProvider(LevelProvider $provider);
 
-
 	/**
 	 * Modifies $blockId and $meta
 	 *

@@ -56,5 +56,4 @@ class EntityArmorChangeEvent extends EntityEvent implements Cancellable{
 		return $this->oldItem;
 	}
 
-
 }

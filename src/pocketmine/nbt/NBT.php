@@ -72,7 +72,6 @@ class NBT{
 	public $endianness;
 	private $data;
 
-
 	/**
 	 * @param Item $item
 	 * @param int $slot

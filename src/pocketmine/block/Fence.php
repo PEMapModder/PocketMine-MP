@@ -27,7 +27,6 @@ use pocketmine\math\Vector3;
 
 class Fence extends Transparent{
 
-
 	public function __construct($meta = 0){
 		parent::__construct(self::FENCE, $meta);
 	}

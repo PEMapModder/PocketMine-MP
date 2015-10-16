@@ -36,7 +36,6 @@ class Leaves extends Transparent{
 	const ACACIA = 0;
 	const DARK_OAK = 1;
 
-
 	public function __construct($meta = 0){
 		parent::__construct(self::LEAVES, $meta);
 	}

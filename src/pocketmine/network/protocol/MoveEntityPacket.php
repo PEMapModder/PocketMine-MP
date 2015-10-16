@@ -26,7 +26,6 @@ namespace pocketmine\network\protocol;
 class MoveEntityPacket extends DataPacket{
 	const NETWORK_ID = Info::MOVE_ENTITY_PACKET;
 
-
 	// eid, x, y, z, yaw, pitch
 	/** @var array[] */
 	public $entities = [];

@@ -44,5 +44,4 @@ class EntityMoveEvent extends EntityEvent implements Cancellable{
 		return $this->pos;
 	}
 
-
 }

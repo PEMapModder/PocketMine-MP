@@ -29,7 +29,6 @@ use pocketmine\Player;
 
 class Cake extends Transparent{
 
-
 	public function __construct($meta = 0){
 		parent::__construct(self::CAKE, $meta);
 	}

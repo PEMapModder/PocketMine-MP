@@ -27,7 +27,6 @@ use pocketmine\item\Tool;
 
 class Cobweb extends Flowable{
 
-
 	public function __construct(){
 		parent::__construct(self::COBWEB);
 	}

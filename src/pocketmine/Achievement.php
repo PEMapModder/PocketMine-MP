@@ -105,7 +105,6 @@ abstract class Achievement{
 
 	];
 
-
 	public static function broadcast(Player $player, $achievementId){
 		if(isset(Achievement::$list[$achievementId])){
 			$translation = new TranslationContainer("chat.type.achievement", [$player->getDisplayName(), TextFormat::GREEN . Achievement::$list[$achievementId]["name"]]);
@@ -133,6 +132,5 @@ abstract class Achievement{
 
 		return false;
 	}
-
 
 }

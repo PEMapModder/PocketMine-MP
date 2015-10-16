@@ -35,7 +35,6 @@ class EntityRegainHealthEvent extends EntityEvent implements Cancellable{
 	private $amount;
 	private $reason;
 
-
 	/**
 	 * @param Entity $entity
 	 * @param float $amount

@@ -233,7 +233,6 @@ abstract class Timings{
 		return self::$packetReceiveTimingMap[$pk::NETWORK_ID];
 	}
 
-
 	/**
 	 * @param DataPacket $pk
 	 *

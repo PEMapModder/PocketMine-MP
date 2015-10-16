@@ -32,7 +32,6 @@ class Sapling extends Flowable{
 	const ACACIA = 4;
 	const DARK_OAK = 5;
 
-
 	public function __construct($meta = 0){
 		parent::__construct(self::SAPLING, $meta);
 	}

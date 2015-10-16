@@ -125,7 +125,6 @@ class SimpleCommandMap implements CommandMap{
 		}
 	}
 
-
 	public function registerAll($fallbackPrefix, array $commands){
 		foreach($commands as $command){
 			$this->register($fallbackPrefix, $command);
@@ -231,7 +230,6 @@ class SimpleCommandMap implements CommandMap{
 		return $this->knownCommands;
 	}
 
-
 	/**
 	 * @return void
 	 */
@@ -274,6 +272,5 @@ class SimpleCommandMap implements CommandMap{
 			}
 		}
 	}
-
 
 }

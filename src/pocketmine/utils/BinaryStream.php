@@ -144,7 +144,6 @@ class BinaryStream extends \stdClass{
 		$this->buffer .= Binary::writeLFloat($v);
 	}
 
-
 	public function getTriad(){
 		return Binary::readTriad($this->get(3));
 	}
@@ -152,7 +151,6 @@ class BinaryStream extends \stdClass{
 	public function putTriad($v){
 		$this->buffer .= Binary::writeTriad($v);
 	}
-
 
 	public function getLTriad(){
 		return Binary::readLTriad($this->get(3));

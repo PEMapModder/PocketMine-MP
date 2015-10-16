@@ -33,7 +33,6 @@ class Wood extends Solid{
 	//const ACACIA = 4;
 	//const DARK_OAK = 5;
 
-
 	public function __construct($meta = 0){
 		parent::__construct(self::WOOD, $meta);
 	}

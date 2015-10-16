@@ -27,7 +27,6 @@ use pocketmine\level\Level;
 
 class RedstoneOre extends Solid{
 
-
 	public function __construct(){
 		parent::__construct(self::REDSTONE_ORE);
 	}

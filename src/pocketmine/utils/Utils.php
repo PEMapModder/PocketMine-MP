@@ -231,7 +231,6 @@ class Utils{
 		return self::$os;
 	}
 
-
 	public static function getRealMemoryUsage(){
 		$stack = 0;
 		$heap = 0;
@@ -349,7 +348,6 @@ class Utils{
 
 		return $output;
 	}
-
 
 	/**
 	 * Returns a string that can be printed, replaces non-printable characters
