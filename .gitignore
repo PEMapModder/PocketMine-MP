@@ -5,7 +5,6 @@ bin/*
 timings/*
 *.log
 *.txt
-*.phar
 server.properties
 pocketmine.yml
 
