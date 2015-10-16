@@ -40,7 +40,7 @@ class CallbackTask extends Task{
 
 	/**
 	 * @param callable $callable
-	 * @param array    $args
+	 * @param array $args
 	 */
 	public function __construct(callable $callable, array $args = []){
 		$this->callable = $callable;

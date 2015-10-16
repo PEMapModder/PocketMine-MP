@@ -30,7 +30,7 @@ interface LevelProvider{
 	const ORDER_ZXY = 1;
 
 	/**
-	 * @param Level  $level
+	 * @param Level $level
 	 * @param string $path
 	 */
 	public function __construct(Level $level, $path);
@@ -78,9 +78,9 @@ interface LevelProvider{
 	/**
 	 * Generate the needed files in the path given
 	 *
-	 * @param string  $path
-	 * @param string  $name
-	 * @param int     $seed
+	 * @param string $path
+	 * @param string $name
+	 * @param int $seed
 	 * @param array[] $options
 	 */
 	public static function generate($path, $name, $seed, array $options = []);
@@ -89,8 +89,8 @@ interface LevelProvider{
 	 * Gets the Chunk object
 	 * This method must be implemented by all the level formats.
 	 *
-	 * @param int  $X      absolute Chunk X value
-	 * @param int  $Z      absolute Chunk Z value
+	 * @param int $X absolute Chunk X value
+	 * @param int $Z absolute Chunk Z value
 	 * @param bool $create Whether to generate the chunk if it does not exist
 	 *
 	 * @return FullChunk|Chunk
@@ -115,8 +115,8 @@ interface LevelProvider{
 	public function unloadChunks();
 
 	/**
-	 * @param int  $X
-	 * @param int  $Z
+	 * @param int $X
+	 * @param int $Z
 	 * @param bool $create
 	 *
 	 * @return bool
@@ -124,8 +124,8 @@ interface LevelProvider{
 	public function loadChunk($X, $Z, $create = false);
 
 	/**
-	 * @param int  $X
-	 * @param int  $Z
+	 * @param int $X
+	 * @param int $Z
 	 * @param bool $safe
 	 *
 	 * @return bool
@@ -157,8 +157,8 @@ interface LevelProvider{
 	public function isChunkLoaded($X, $Z);
 
 	/**
-	 * @param int       $chunkX
-	 * @param int       $chunkZ
+	 * @param int $chunkX
+	 * @param int $chunkZ
 	 * @param FullChunk $chunk
 	 *
 	 * @return mixed

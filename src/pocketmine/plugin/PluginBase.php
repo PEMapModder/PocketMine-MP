@@ -58,15 +58,12 @@ abstract class PluginBase implements Plugin{
 	 * Called when the plugin is loaded, before calling onEnable()
 	 */
 	public function onLoad(){
-
 	}
 
 	public function onEnable(){
-
 	}
 
 	public function onDisable(){
-
 	}
 
 	/**
@@ -152,9 +149,9 @@ abstract class PluginBase implements Plugin{
 
 	/**
 	 * @param CommandSender $sender
-	 * @param Command       $command
-	 * @param string        $label
-	 * @param array         $args
+	 * @param Command $command
+	 * @param string $label
+	 * @param array $args
 	 *
 	 * @return bool
 	 */
@@ -188,7 +185,7 @@ abstract class PluginBase implements Plugin{
 
 	/**
 	 * @param string $filename
-	 * @param bool   $replace
+	 * @param bool $replace
 	 *
 	 * @return bool
 	 */

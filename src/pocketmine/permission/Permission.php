@@ -92,9 +92,9 @@ class Permission{
 	/**
 	 * Creates a new Permission object to be attached to Permissible objects
 	 *
-	 * @param string       $name
-	 * @param string       $description
-	 * @param string       $defaultValue
+	 * @param string $name
+	 * @param string $description
+	 * @param string $defaultValue
 	 * @param Permission[] $children
 	 */
 	public function __construct($name, $description = null, $defaultValue = null, array $children = []){
@@ -179,7 +179,7 @@ class Permission{
 		if($name instanceof Permission){
 			$name->getChildren()[$this->getName()] = $value;
 			$name->recalculatePermissibles();
-			return;
+			return null;
 		}else{
 			$perm = Server::getInstance()->getPluginManager()->getPermission($name);
 			if($perm === null){
@@ -210,9 +210,9 @@ class Permission{
 
 	/**
 	 * @param string $name
-	 * @param array  $data
+	 * @param array $data
 	 * @param string $default
-	 * @param array  $output
+	 * @param array $output
 	 *
 	 * @return Permission
 	 *
@@ -250,7 +250,6 @@ class Permission{
 		}
 
 		return new Permission($name, $desc, $default, $children);
-
 	}
 
 

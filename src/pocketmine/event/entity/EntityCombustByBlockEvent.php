@@ -29,9 +29,9 @@ class EntityCombustByBlockEvent extends EntityCombustEvent{
 	protected $combuster;
 
 	/**
-	 * @param Block  $combuster
+	 * @param Block $combuster
 	 * @param Entity $combustee
-	 * @param int    $duration
+	 * @param int $duration
 	 */
 	public function __construct(Block $combuster, Entity $combustee, $duration){
 		parent::__construct($combustee, $duration);

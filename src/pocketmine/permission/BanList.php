@@ -90,10 +90,10 @@ class BanList{
 	}
 
 	/**
-	 * @param string    $target
-	 * @param string    $reason
+	 * @param string $target
+	 * @param string $reason
 	 * @param \DateTime $expires
-	 * @param string    $source
+	 * @param string $source
 	 *
 	 * @return BanEntry
 	 */

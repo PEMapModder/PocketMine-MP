@@ -23,10 +23,8 @@ namespace pocketmine\inventory;
 
 use pocketmine\item\Item;
 use pocketmine\level\Level;
-use pocketmine\network\Network;
 use pocketmine\network\protocol\TileEventPacket;
 use pocketmine\Player;
-
 use pocketmine\tile\Chest;
 
 class DoubleChestInventory extends ChestInventory implements InventoryHolder{
@@ -35,6 +33,10 @@ class DoubleChestInventory extends ChestInventory implements InventoryHolder{
 	/** @var ChestInventory */
 	private $right;
 
+	/** @noinspection PhpMissingParentConstructorInspection
+	 * @param Chest $left
+	 * @param Chest $right
+	 */
 	public function __construct(Chest $left, Chest $right){
 		$this->left = $left->getRealInventory();
 		$this->right = $right->getRealInventory();
@@ -79,10 +81,9 @@ class DoubleChestInventory extends ChestInventory implements InventoryHolder{
 			$items = array_slice($items, 0, $this->size, true);
 		}
 
-
 		for($i = 0; $i < $this->size; ++$i){
 			if(!isset($items[$i])){
-				if ($i < $this->left->size){
+				if($i < $this->left->size){
 					if(isset($this->left->slots[$i])){
 						$this->clear($i);
 					}

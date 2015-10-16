@@ -82,7 +82,7 @@ abstract class AsyncTask extends \Collectable{
 
 	/**
 	 * @param mixed $result
-	 * @param bool  $serialize
+	 * @param bool $serialize
 	 */
 	public function setResult($result, $serialize = true){
 		$this->result = $serialize ? serialize($result) : $result;
@@ -114,7 +114,7 @@ abstract class AsyncTask extends \Collectable{
 	 * This might get deleted at any moment.
 	 *
 	 * @param string $identifier
-	 * @param mixed  $value
+	 * @param mixed $value
 	 */
 	public function saveToThreadStore($identifier, $value){
 		global $store;
@@ -139,7 +139,6 @@ abstract class AsyncTask extends \Collectable{
 	 * @return void
 	 */
 	public function onCompletion(Server $server){
-
 	}
 
 	public function cleanObject(){

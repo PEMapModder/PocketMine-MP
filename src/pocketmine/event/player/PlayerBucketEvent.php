@@ -39,10 +39,10 @@ abstract class PlayerBucketEvent extends PlayerEvent implements Cancellable{
 
 	/**
 	 * @param Player $who
-	 * @param Block  $blockClicked
-	 * @param int    $blockFace
-	 * @param Item   $bucket
-	 * @param Item   $itemInHand
+	 * @param Block $blockClicked
+	 * @param int $blockFace
+	 * @param Item $bucket
+	 * @param Item $itemInHand
 	 */
 	public function __construct(Player $who, Block $blockClicked, $blockFace, Item $bucket, Item $itemInHand){
 		$this->player = $who;

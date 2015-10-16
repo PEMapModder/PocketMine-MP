@@ -28,7 +28,7 @@ interface Metadatable{
 	/**
 	 * Sets a metadata value in the implementing object's metadata store.
 	 *
-	 * @param string        $metadataKey
+	 * @param string $metadataKey
 	 * @param MetadataValue $newMetadataValue
 	 *
 	 * @return void

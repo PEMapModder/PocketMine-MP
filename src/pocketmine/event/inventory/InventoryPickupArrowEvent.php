@@ -33,7 +33,7 @@ class InventoryPickupArrowEvent extends InventoryEvent implements Cancellable{
 
 	/**
 	 * @param Inventory $inventory
-	 * @param Arrow     $arrow
+	 * @param Arrow $arrow
 	 */
 	public function __construct(Inventory $inventory, Arrow $arrow){
 		$this->arrow = $arrow;

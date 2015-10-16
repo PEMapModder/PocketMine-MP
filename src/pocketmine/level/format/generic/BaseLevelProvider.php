@@ -27,7 +27,6 @@ use pocketmine\math\Vector3;
 use pocketmine\nbt\NBT;
 use pocketmine\nbt\tag\Compound;
 use pocketmine\nbt\tag\Int;
-use pocketmine\nbt\tag\String;
 use pocketmine\utils\LevelException;
 
 abstract class BaseLevelProvider implements LevelProvider{
@@ -97,7 +96,6 @@ abstract class BaseLevelProvider implements LevelProvider{
 	}
 
 	public function doGarbageCollection(){
-
 	}
 
 	/**

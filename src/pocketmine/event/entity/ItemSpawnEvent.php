@@ -31,7 +31,6 @@ class ItemSpawnEvent extends EntityEvent{
 	 */
 	public function __construct(Item $item){
 		$this->entity = $item;
-
 	}
 
 	/**

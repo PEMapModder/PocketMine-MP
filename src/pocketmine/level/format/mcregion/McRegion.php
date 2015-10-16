@@ -31,7 +31,6 @@ use pocketmine\nbt\tag\Int;
 use pocketmine\nbt\tag\Long;
 use pocketmine\nbt\tag\String;
 use pocketmine\tile\Spawnable;
-
 use pocketmine\utils\BinaryStream;
 use pocketmine\utils\ChunkException;
 
@@ -242,8 +241,8 @@ class McRegion extends BaseLevelProvider{
 	}
 
 	/**
-	 * @param int  $chunkX
-	 * @param int  $chunkZ
+	 * @param int $chunkX
+	 * @param int $chunkZ
 	 * @param bool $create
 	 *
 	 * @return Chunk
@@ -271,7 +270,6 @@ class McRegion extends BaseLevelProvider{
 
 		$chunk->setX($chunkX);
 		$chunk->setZ($chunkZ);
-
 
 		if(isset($this->chunks[$index = Level::chunkHash($chunkX, $chunkZ)]) and $this->chunks[$index] !== $chunk){
 			$this->unloadChunk($chunkX, $chunkZ, false);

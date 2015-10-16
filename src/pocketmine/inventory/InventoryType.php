@@ -69,9 +69,9 @@ class InventoryType{
 	}
 
 	/**
-	 * @param int    $defaultSize
+	 * @param int $defaultSize
 	 * @param string $defaultTitle
-	 * @param int    $typeId
+	 * @param int $typeId
 	 */
 	private function __construct($defaultSize, $defaultTitle, $typeId = 0){
 		$this->size = $defaultSize;

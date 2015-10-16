@@ -41,7 +41,7 @@ interface Chunk extends FullChunk{
 	public function getSection($fY);
 
 	/**
-	 * @param int          $fY 0-7
+	 * @param int $fY 0-7
 	 * @param ChunkSection $section
 	 *
 	 * @return boolean

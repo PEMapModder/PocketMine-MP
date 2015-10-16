@@ -43,7 +43,7 @@ class ServerCommandEvent extends ServerEvent implements Cancellable{
 
 	/**
 	 * @param CommandSender $sender
-	 * @param string        $command
+	 * @param string $command
 	 */
 	public function __construct(CommandSender $sender, $command){
 		$this->sender = $sender;

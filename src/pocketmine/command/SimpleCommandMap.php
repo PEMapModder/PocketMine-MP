@@ -272,7 +272,6 @@ class SimpleCommandMap implements CommandMap{
 			}else{
 				unset($this->knownCommands[strtolower($alias)]);
 			}
-
 		}
 	}
 

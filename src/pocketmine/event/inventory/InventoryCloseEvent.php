@@ -32,7 +32,7 @@ class InventoryCloseEvent extends InventoryEvent{
 
 	/**
 	 * @param Inventory $inventory
-	 * @param Player    $who
+	 * @param Player $who
 	 */
 	public function __construct(Inventory $inventory, Player $who){
 		$this->who = $who;

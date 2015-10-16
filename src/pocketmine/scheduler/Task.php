@@ -66,7 +66,6 @@ abstract class Task{
 	 * Actions to execute if the Task is cancelled
 	 */
 	public function onCancel(){
-
 	}
 
 }

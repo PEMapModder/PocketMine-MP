@@ -93,7 +93,7 @@ class PluginManager{
 	public static $useTimings = false;
 
 	/**
-	 * @param Server           $server
+	 * @param Server $server
 	 * @param SimpleCommandMap $commandMap
 	 */
 	public function __construct(Server $server, SimpleCommandMap $commandMap){
@@ -139,7 +139,7 @@ class PluginManager{
 	}
 
 	/**
-	 * @param string         $path
+	 * @param string $path
 	 * @param PluginLoader[] $loaders
 	 *
 	 * @return Plugin
@@ -169,7 +169,7 @@ class PluginManager{
 
 	/**
 	 * @param string $directory
-	 * @param array  $newLoaders
+	 * @param array $newLoaders
 	 *
 	 * @return Plugin[]
 	 */
@@ -258,7 +258,6 @@ class PluginManager{
 					}
 				}
 			}
-
 
 			while(count($plugins) > 0){
 				$missingDependency = true;
@@ -426,7 +425,7 @@ class PluginManager{
 	}
 
 	/**
-	 * @param string      $permission
+	 * @param string $permission
 	 * @param Permissible $permissible
 	 */
 	public function subscribeToPermission($permission, Permissible $permissible){
@@ -437,7 +436,7 @@ class PluginManager{
 	}
 
 	/**
-	 * @param string      $permission
+	 * @param string $permission
 	 * @param Permissible $permissible
 	 */
 	public function unsubscribeFromPermission($permission, Permissible $permissible){
@@ -474,7 +473,7 @@ class PluginManager{
 	}
 
 	/**
-	 * @param boolean     $op
+	 * @param boolean $op
 	 * @param Permissible $permissible
 	 */
 	public function subscribeToDefaultPerms($op, Permissible $permissible){
@@ -486,7 +485,7 @@ class PluginManager{
 	}
 
 	/**
-	 * @param boolean     $op
+	 * @param boolean $op
 	 * @param Permissible $permissible
 	 */
 	public function unsubscribeFromDefaultPerms($op, Permissible $permissible){
@@ -691,7 +690,7 @@ class PluginManager{
 	 * Registers all the events in the given Listener class
 	 *
 	 * @param Listener $listener
-	 * @param Plugin   $plugin
+	 * @param Plugin $plugin
 	 *
 	 * @throws PluginException
 	 */
@@ -738,12 +737,12 @@ class PluginManager{
 	}
 
 	/**
-	 * @param string        $event Class name that extends Event
-	 * @param Listener      $listener
-	 * @param int           $priority
+	 * @param string $event Class name that extends Event
+	 * @param Listener $listener
+	 * @param int $priority
 	 * @param EventExecutor $executor
-	 * @param Plugin        $plugin
-	 * @param bool          $ignoreCancelled
+	 * @param Plugin $plugin
+	 * @param bool $ignoreCancelled
 	 *
 	 * @throws PluginException
 	 */

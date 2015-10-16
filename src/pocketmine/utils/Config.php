@@ -2,11 +2,11 @@
 
 /*
  *
- *  ____            _        _   __  __ _                  __  __ ____  
- * |  _ \ ___   ___| | _____| |_|  \/  (_)_ __   ___      |  \/  |  _ \ 
+ *  ____            _        _   __  __ _                  __  __ ____
+ * |  _ \ ___   ___| | _____| |_|  \/  (_)_ __   ___      |  \/  |  _ \
  * | |_) / _ \ / __| |/ / _ \ __| |\/| | | '_ \ / _ \_____| |\/| | |_) |
- * |  __/ (_) | (__|   <  __/ |_| |  | | | | | |  __/_____| |  | |  __/ 
- * |_|   \___/ \___|_|\_\___|\__|_|  |_|_|_| |_|\___|     |_|  |_|_| 
+ * |  __/ (_) | (__|   <  __/ |_| |  | | | | | |  __/_____| |  | |  __/
+ * |_|   \___/ \___|_|\_\___|\__|_|  |_|_|_| |_|\___|     |_|  |_|_|
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -15,14 +15,14 @@
  *
  * @author PocketMine Team
  * @link http://www.pocketmine.net/
- * 
+ *
  *
 */
 
 namespace pocketmine\utils;
+
 use pocketmine\scheduler\FileWriteTask;
 use pocketmine\Server;
-
 
 /**
  * Class Config
@@ -71,10 +71,10 @@ class Config{
 	];
 
 	/**
-	 * @param string $file     Path of the file to be loaded
-	 * @param int    $type     Config type to load, -1 by default (detect)
-	 * @param array  $default  Array with the default values, will be set if not existent
-	 * @param null   &$correct Sets correct to true if everything has been loaded correctly
+	 * @param string $file Path of the file to be loaded
+	 * @param int $type Config type to load, -1 by default (detect)
+	 * @param array $default Array with the default values, will be set if not existent
+	 * @param null &$correct Sets correct to true if everything has been loaded correctly
 	 */
 	public function __construct($file, $type = Config::DETECT, $default = [], &$correct = null){
 		$this->load($file, $type, $default);
@@ -103,7 +103,7 @@ class Config{
 
 	/**
 	 * @param       $file
-	 * @param int   $type
+	 * @param int $type
 	 * @param array $default
 	 *
 	 * @return bool
@@ -346,7 +346,7 @@ class Config{
 	 * @deprecated
 	 *
 	 * @param string $path
-	 * @param mixed  $value
+	 * @param mixed $value
 	 */
 	public function setPath($path, $value){
 		$currPath =& $this->config;
@@ -363,7 +363,7 @@ class Config{
 
 	/**
 	 * @param string $k key to be set
-	 * @param mixed  $v value to set key
+	 * @param mixed $v value to set key
 	 */
 	public function set($k, $v = true){
 		$this->config[$k] = $v;

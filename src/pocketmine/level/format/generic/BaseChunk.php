@@ -34,14 +34,14 @@ abstract class BaseChunk extends BaseFullChunk implements Chunk{
 	protected $sections = [];
 
 	/**
-	 * @param LevelProvider  $provider
-	 * @param int            $x
-	 * @param int            $z
+	 * @param LevelProvider $provider
+	 * @param int $x
+	 * @param int $z
 	 * @param ChunkSection[] $sections
-	 * @param int[]          $biomeColors
-	 * @param int[]          $heightMap
-	 * @param Compound[]     $entities
-	 * @param Compound[]     $tiles
+	 * @param int[] $biomeColors
+	 * @param int[] $heightMap
+	 * @param Compound[] $entities
+	 * @param Compound[] $tiles
 	 *
 	 * @throws ChunkException
 	 */
@@ -61,7 +61,7 @@ abstract class BaseChunk extends BaseFullChunk implements Chunk{
 			}
 		}
 
-        $this->biomeColors = array_fill(0, 256, Binary::readInt("\x00\x85\xb2\x4a"));
+		$this->biomeColors = array_fill(0, 256, Binary::readInt("\x00\x85\xb2\x4a"));
 
 		if(count($heightMap) === 256){
 			$this->heightMap = $heightMap;

@@ -29,6 +29,8 @@ class CompatibleClassLoader extends \BaseClassLoader{
 
 	/**
 	 * @deprecated
+	 * @param $namespace
+	 * @param $paths
 	 */
 	public function add($namespace, $paths){
 		$this->addPath(array_shift($paths));

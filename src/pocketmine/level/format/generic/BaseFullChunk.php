@@ -30,7 +30,6 @@ use pocketmine\nbt\tag\Compound;
 use pocketmine\Player;
 use pocketmine\tile\Tile;
 
-
 abstract class BaseFullChunk implements FullChunk{
 
 	/** @var Entity[] */
@@ -73,16 +72,17 @@ abstract class BaseFullChunk implements FullChunk{
 
 	/**
 	 * @param LevelProvider $provider
-	 * @param int           $x
-	 * @param int           $z
-	 * @param string        $blocks
-	 * @param string        $data
-	 * @param string        $skyLight
-	 * @param string        $blockLight
-	 * @param int[]         $biomeColors
-	 * @param int[]         $heightMap
-	 * @param Compound[]    $entities
-	 * @param Compound[]    $tiles
+	 * @param int $x
+	 * @param int $z
+	 * @param string $blocks
+	 * @param string $data
+	 * @param string $skyLight
+	 * @param string $blockLight
+	 * @param int[] $biomeColors
+	 * @param int[] $heightMap
+	 * @param Compound[] $entities
+	 * @param Compound[] $tiles
+	 * @param array $extraData
 	 */
 	protected function __construct($provider, $x, $z, $blocks, $data, $skyLight, $blockLight, array $biomeColors = [], array $heightMap = [], array $entities = [], array $tiles = [], array $extraData = []){
 		$this->provider = $provider;
@@ -277,9 +277,14 @@ abstract class BaseFullChunk implements FullChunk{
 		}
 	}
 
-	/** @deprecated */
+	/** @deprecated
+	 * @param $x
+	 * @param $z
+	 * @param $R
+	 * @param $G
+	 * @param $B
+	 */
 	public function setBiomeColor($x, $z, $R, $G, $B){
-
 	}
 
 	public function getHighestBlockAt($x, $z, $cache = true){
@@ -442,7 +447,6 @@ abstract class BaseFullChunk implements FullChunk{
 	}
 
 	public function setLightPopulated($value = 1){
-
 	}
 
 }

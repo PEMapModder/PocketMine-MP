@@ -33,7 +33,7 @@ class InventoryOpenEvent extends InventoryEvent implements Cancellable{
 
 	/**
 	 * @param Inventory $inventory
-	 * @param Player    $who
+	 * @param Player $who
 	 */
 	public function __construct(Inventory $inventory, Player $who){
 		$this->who = $who;

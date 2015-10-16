@@ -23,6 +23,7 @@
  * Common functions used to decode and encode packets for the Minecraft PE client.
  */
 namespace pocketmine\utils;
+
 use pocketmine\entity\Entity;
 
 class Binary{
@@ -182,7 +183,6 @@ class Binary{
 					break;
 				default:
 					return [];
-
 			}
 			if($types === true){
 				$m[$bottom] = [$r, $type];
@@ -222,7 +222,7 @@ class Binary{
 	 * Reads an unsigned/signed byte
 	 *
 	 * @param string $c
-	 * @param bool   $signed
+	 * @param bool $signed
 	 *
 	 * @return int
 	 */

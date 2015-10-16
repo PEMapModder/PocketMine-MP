@@ -76,11 +76,11 @@ interface FullChunk{
 	public function getFullBlock($x, $y, $z);
 
 	/**
-	 * @param int $x       0-15
-	 * @param int $y       0-127
-	 * @param int $z       0-15
+	 * @param int $x 0-15
+	 * @param int $y 0-127
+	 * @param int $z 0-15
 	 * @param int $blockId , if null, do not change
-	 * @param int $meta    0-15, if null, do not change
+	 * @param int $meta 0-15, if null, do not change
 	 *
 	 */
 	public function setBlock($x, $y, $z, $blockId = null, $meta = null);
@@ -95,9 +95,9 @@ interface FullChunk{
 	public function getBlockId($x, $y, $z);
 
 	/**
-	 * @param int $x  0-15
-	 * @param int $y  0-127
-	 * @param int $z  0-15
+	 * @param int $x 0-15
+	 * @param int $y 0-127
+	 * @param int $z 0-15
 	 * @param int $id 0-255
 	 */
 	public function setBlockId($x, $y, $z, $id);
@@ -112,9 +112,9 @@ interface FullChunk{
 	public function getBlockData($x, $y, $z);
 
 	/**
-	 * @param int $x    0-15
-	 * @param int $y    0-127
-	 * @param int $z    0-15
+	 * @param int $x 0-15
+	 * @param int $y 0-127
+	 * @param int $z 0-15
 	 * @param int $data 0-15
 	 */
 	public function setBlockData($x, $y, $z, $data);
@@ -129,9 +129,9 @@ interface FullChunk{
 	public function getBlockExtraData($x, $y, $z);
 
 	/**
-	 * @param int $x    0-15
-	 * @param int $y    0-127
-	 * @param int $z    0-15
+	 * @param int $x 0-15
+	 * @param int $y 0-127
+	 * @param int $z 0-15
 	 * @param int $data (16-bit)
 	 */
 	public function setBlockExtraData($x, $y, $z, $data);
@@ -146,9 +146,9 @@ interface FullChunk{
 	public function getBlockSkyLight($x, $y, $z);
 
 	/**
-	 * @param int $x     0-15
-	 * @param int $y     0-127
-	 * @param int $z     0-15
+	 * @param int $x 0-15
+	 * @param int $y 0-127
+	 * @param int $z 0-15
 	 * @param int $level 0-15
 	 */
 	public function setBlockSkyLight($x, $y, $z, $level);
@@ -163,9 +163,9 @@ interface FullChunk{
 	public function getBlockLight($x, $y, $z);
 
 	/**
-	 * @param int $x     0-15
-	 * @param int $y     0-127
-	 * @param int $z     0-15
+	 * @param int $x 0-15
+	 * @param int $y 0-127
+	 * @param int $z 0-15
 	 * @param int $level 0-15
 	 */
 	public function setBlockLight($x, $y, $z, $level);
@@ -206,8 +206,8 @@ interface FullChunk{
 	public function getBiomeId($x, $z);
 
 	/**
-	 * @param int $x       0-15
-	 * @param int $z       0-15
+	 * @param int $x 0-15
+	 * @param int $z 0-15
 	 * @param int $biomeId 0-255
 	 */
 	public function setBiomeId($x, $z, $biomeId);
@@ -341,7 +341,7 @@ interface FullChunk{
 	public function setChanged($changed = true);
 
 	/**
-	 * @param string        $data
+	 * @param string $data
 	 * @param LevelProvider $provider
 	 *
 	 * @return FullChunk
@@ -349,7 +349,7 @@ interface FullChunk{
 	public static function fromBinary($data, LevelProvider $provider = null);
 
 	/**
-	 * @param string        $data
+	 * @param string $data
 	 * @param LevelProvider $provider
 	 *
 	 * @return FullChunk
@@ -357,8 +357,8 @@ interface FullChunk{
 	public static function fromFastBinary($data, LevelProvider $provider = null);
 
 	/**
-	 * @param int           $chunkX
-	 * @param int           $chunkZ
+	 * @param int $chunkX
+	 * @param int $chunkZ
 	 * @param LevelProvider $provider
 	 *
 	 * @return FullChunk

@@ -47,9 +47,9 @@ class MainLogger extends \AttachableThreadedLogger{
 
 	/**
 	 * @param string $logFile
-	 * @param bool   $logDebug
+	 * @param bool $logDebug
 	 *
-	 * @throws \RuntimeException
+	 * @param bool $write
 	 */
 	public function __construct($logFile, $logDebug = false, $write = true){
 		if(static::$logger instanceof MainLogger){
@@ -57,7 +57,7 @@ class MainLogger extends \AttachableThreadedLogger{
 		}
 		static::$logger = $this;
 		$this->write = $write;
-		if($write) {
+		if($write){
 			touch($logFile);
 			$this->logFile = $logFile;
 			$this->logDebug = (bool) $logDebug;
@@ -204,8 +204,12 @@ class MainLogger extends \AttachableThreadedLogger{
 		}
 
 		$text = "";
-		if($this->showTimestamps) $text .= TextFormat::AQUA . "[" . date("H:i:s", $now) . "] ". TextFormat::RESET;
-		if($this->showLevel) $text .= "[" . ($this->showThread ? $threadName . "/"  : "") . $prefix . "]: ";
+		if($this->showTimestamps){
+			$text .= TextFormat::AQUA . "[" . date("H:i:s", $now) . "] " . TextFormat::RESET;
+		}
+		if($this->showLevel){
+			$text .= "[" . ($this->showThread ? $threadName . "/" : "") . $prefix . "]: ";
+		}
 		$text .= $color;
 		$text .= $message;
 		$text .= TextFormat::RESET;
@@ -224,7 +228,7 @@ class MainLogger extends \AttachableThreadedLogger{
 
 		$this->logStream[] = date("Y-m-d", $now) . " " . $cleanMessage . "\n";
 		if($this->logStream->count() === 1){
-			$this->synchronized(function(){
+			$this->synchronized(function (){
 				$this->notify();
 			});
 		}
@@ -232,14 +236,14 @@ class MainLogger extends \AttachableThreadedLogger{
 
 	public function run(){
 		$this->shutdown = false;
-		if($this->write) {
+		if($this->write){
 			$this->logResource = fopen($this->logFile, "a+b");
 			if(!is_resource($this->logResource)){
 				throw new \RuntimeException("Couldn't open log file");
 			}
 
 			while($this->shutdown === false){
-				$this->synchronized(function(){
+				$this->synchronized(function (){
 					while($this->logStream->count() > 0){
 						$chunk = $this->logStream->shift();
 						fwrite($this->logResource, $chunk);
@@ -260,7 +264,7 @@ class MainLogger extends \AttachableThreadedLogger{
 		}
 	}
 
-	public function setSettings($settings) {
+	public function setSettings($settings){
 		$this->showLevel = $settings["level"];
 		$this->showThread = $settings["thread"];
 		$this->showTimestamps = $settings["timestamps"];

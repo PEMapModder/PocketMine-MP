@@ -22,9 +22,9 @@
 namespace pocketmine\inventory;
 
 use pocketmine\item\Item;
+use pocketmine\math\Vector2;
 use pocketmine\Server;
 use pocketmine\utils\UUID;
-use pocketmine\math\Vector2;
 
 class ShapedRecipe implements Recipe{
 	/** @var Item */
@@ -41,7 +41,7 @@ class ShapedRecipe implements Recipe{
 	private $shapeItems = [];
 
 	/**
-	 * @param Item     $result
+	 * @param Item $result
 	 * @param string[] $shape
 	 *
 	 * @throws \Exception
@@ -99,7 +99,7 @@ class ShapedRecipe implements Recipe{
 
 	/**
 	 * @param string $key
-	 * @param Item   $item
+	 * @param Item $item
 	 *
 	 * @return $this
 	 * @throws \Exception

@@ -2,11 +2,11 @@
 
 /*
  *
- *  ____            _        _   __  __ _                  __  __ ____  
- * |  _ \ ___   ___| | _____| |_|  \/  (_)_ __   ___      |  \/  |  _ \ 
+ *  ____            _        _   __  __ _                  __  __ ____
+ * |  _ \ ___   ___| | _____| |_|  \/  (_)_ __   ___      |  \/  |  _ \
  * | |_) / _ \ / __| |/ / _ \ __| |\/| | | '_ \ / _ \_____| |\/| | |_) |
- * |  __/ (_) | (__|   <  __/ |_| |  | | | | | |  __/_____| |  | |  __/ 
- * |_|   \___/ \___|_|\_\___|\__|_|  |_|_|_| |_|\___|     |_|  |_|_| 
+ * |  __/ (_) | (__|   <  __/ |_| |  | | | | | |  __/_____| |  | |  __/
+ * |_|   \___/ \___|_|\_\___|\__|_|  |_|_|_| |_|\___|     |_|  |_|_|
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -15,7 +15,7 @@
  *
  * @author PocketMine Team
  * @link http://www.pocketmine.net/
- * 
+ *
  *
 */
 
@@ -39,13 +39,11 @@ use pocketmine\nbt\tag\NamedTAG;
 use pocketmine\nbt\tag\Short;
 use pocketmine\nbt\tag\String;
 use pocketmine\nbt\tag\Tag;
-use pocketmine\utils\Utils;
-
-#ifndef COMPILE
 use pocketmine\utils\Binary;
 
-#endif
+#ifndef COMPILE
 
+#endif
 
 #include <rules/NBT.h>
 
@@ -77,7 +75,7 @@ class NBT{
 
 	/**
 	 * @param Item $item
-	 * @param int  $slot
+	 * @param int $slot
 	 * @return Compound
 	 */
 	public static function putItemHelper(Item $item, $slot = null){
@@ -109,7 +107,7 @@ class NBT{
 		}
 
 		$item = Item::get($tag->id->getValue(), !isset($tag->Damage) ? 0 : $tag->Damage->getValue(), $tag->Count->getValue());
-		
+
 		if(isset($tag->tag) and $tag->tag instanceof Compound){
 			$item->setNamedTag($tag->tag);
 		}
@@ -199,7 +197,6 @@ class NBT{
 
 	private static function parseList($str, &$offset = 0){
 		$len = strlen($str);
-
 
 		$key = 0;
 		$value = null;

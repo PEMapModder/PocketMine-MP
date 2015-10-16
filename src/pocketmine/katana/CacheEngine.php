@@ -19,17 +19,19 @@ use pocketmine\utils\Terminal;
  * For now this just reads the config, for actual implementation see Level.php
  */
 
-class CacheEngine extends KatanaModule {
+class CacheEngine extends KatanaModule{
 	public $cacheDisk = true;
 
-	public function init() {
+	public function init(){
 		parent::setName("cache");
 		parent::writeLoaded();
 
-		if(parent::getKatana()->getProperty("cache.save-to-disk", true)) {
+		if(parent::getKatana()->getProperty("cache.save-to-disk", true)){
 			parent::getKatana()->console->katana("Disk caching " . Terminal::$COLOR_GREEN . "enabled");
-			if(!file_exists(parent::getServer()->getDataPath() . "chunk_cache/")) mkdir(parent::getServer()->getDataPath() . "chunk_cache/", 0777);
-		} else {
+			if(!file_exists(parent::getServer()->getDataPath() . "chunk_cache/")){
+				mkdir(parent::getServer()->getDataPath() . "chunk_cache/", 0777);
+			}
+		}else{
 			parent::getKatana()->console->katana("Disk caching " . Terminal::$COLOR_RED . "disabled");
 		}
 

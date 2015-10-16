@@ -31,7 +31,7 @@ class EntityCombustEvent extends EntityEvent implements Cancellable{
 
 	/**
 	 * @param Entity $combustee
-	 * @param int    $duration
+	 * @param int $duration
 	 */
 	public function __construct(Entity $combustee, $duration){
 		$this->entity = $combustee;

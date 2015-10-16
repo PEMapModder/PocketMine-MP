@@ -46,7 +46,7 @@ class Chunk extends BaseFullChunk{
 			$this->nbt = new Compound("Level", []);
 			return;
 		}
-		
+
 		$this->nbt = $nbt;
 
 		if(isset($this->nbt->Entities) and $this->nbt->Entities instanceof Enum){
@@ -70,7 +70,7 @@ class Chunk extends BaseFullChunk{
 			$this->nbt->TileTicks->setTagType(NBT::TAG_Compound);
 		}
 
-        $this->nbt->BiomeColors = new IntArray("BiomeColors", array_fill(0, 256, Binary::readInt("\x00\x85\xb2\x4a")));
+		$this->nbt->BiomeColors = new IntArray("BiomeColors", array_fill(0, 256, Binary::readInt("\x00\x85\xb2\x4a")));
 
 		if(!isset($this->nbt->HeightMap) or !($this->nbt->HeightMap instanceof IntArray)){
 			$this->nbt->HeightMap = new IntArray("HeightMap", array_fill(0, 256, 0));
@@ -295,7 +295,7 @@ class Chunk extends BaseFullChunk{
 	}
 
 	/**
-	 * @param string        $data
+	 * @param string $data
 	 * @param LevelProvider $provider
 	 *
 	 * @return Chunk
@@ -316,7 +316,7 @@ class Chunk extends BaseFullChunk{
 			return null;
 		}
 	}
-	
+
 	public static function fromFastBinary($data, LevelProvider $provider = null){
 
 		try{
@@ -354,7 +354,7 @@ class Chunk extends BaseFullChunk{
 			return null;
 		}
 	}
-	
+
 	public function toFastBinary(){
 		return
 			Binary::writeInt($this->x) .
@@ -397,7 +397,6 @@ class Chunk extends BaseFullChunk{
 		$nbt->Entities = new Enum("Entities", $entities);
 		$nbt->Entities->setTagType(NBT::TAG_Compound);
 
-
 		$tiles = [];
 		foreach($this->getTiles() as $tile){
 			$tile->saveNBT();
@@ -431,8 +430,8 @@ class Chunk extends BaseFullChunk{
 	}
 
 	/**
-	 * @param int           $chunkX
-	 * @param int           $chunkZ
+	 * @param int $chunkX
+	 * @param int $chunkZ
 	 * @param LevelProvider $provider
 	 *
 	 * @return Chunk

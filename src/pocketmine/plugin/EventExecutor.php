@@ -28,7 +28,7 @@ interface EventExecutor{
 
 	/**
 	 * @param Listener $listener
-	 * @param Event    $event
+	 * @param Event $event
 	 *
 	 * @return void
 	 */

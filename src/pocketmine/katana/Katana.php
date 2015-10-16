@@ -21,7 +21,7 @@ use pocketmine\utils\Terminal;
  * Handles Katana's modified functionality and provides an abstraction layer for its modules.
  */
 
-class Katana {
+class Katana{
 	/** @var Server */
 	private $server;
 
@@ -41,7 +41,7 @@ class Katana {
 
 	private $modules = [];
 
-	public function __construct($server) {
+	public function __construct($server){
 		$this->server = $server;
 
 		$this->getServer()->getLogger()->info(Terminal::$COLOR_GOLD . " ");
@@ -60,7 +60,7 @@ class Katana {
 		$this->initModules();
 	}
 
-	public function getServer() {
+	public function getServer(){
 		return $this->server;
 	}
 
@@ -77,7 +77,7 @@ class Katana {
 		return $this->propertyCache[$variable] === null ? $defaultValue : $this->propertyCache[$variable];
 	}
 
-	public function initConfig() {
+	public function initConfig(){
 		if(!file_exists($this->server->getDataPath() . "katana.yml")){
 			$content = file_get_contents($this->server->getDataPath() . "src/pocketmine/resources/katana.yml");
 			@file_put_contents($this->server->getDataPath() . "katana.yml", $content);
@@ -85,7 +85,7 @@ class Katana {
 		$this->properties = new Config($this->server->getDataPath() . "katana.yml", Config::YAML, []);
 	}
 
-	public function initLogger() {
+	public function initLogger(){
 		$this->server->getLogger()->setSettings([
 			"level" => $this->getProperty("console.show-log-level"),
 			"thread" => $this->getProperty("console.show-thread"),
@@ -93,8 +93,8 @@ class Katana {
 		]);
 	}
 
-	public function initModules() {
-		if($this->getProperty("redirect.enable")) {
+	public function initModules(){
+		if($this->getProperty("redirect.enable")){
 			$this->redirect = new RedirectEngine($this);
 			$this->redirect->init();
 			$this->modules[] = $this->redirect;
@@ -109,7 +109,6 @@ class Katana {
 		$this->modules[] = $this->cache;
 	}
 
-	public function tickModules() {
-
+	public function tickModules(){
 	}
 }

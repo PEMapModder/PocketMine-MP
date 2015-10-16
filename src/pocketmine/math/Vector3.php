@@ -86,8 +86,8 @@ class Vector3{
 
 	/**
 	 * @param Vector3|int $x
-	 * @param int         $y
-	 * @param int         $z
+	 * @param int $y
+	 * @param int $z
 	 *
 	 * @return Vector3
 	 */
@@ -101,8 +101,8 @@ class Vector3{
 
 	/**
 	 * @param Vector3|int $x
-	 * @param int         $y
-	 * @param int         $z
+	 * @param int $y
+	 * @param int $z
 	 *
 	 * @return Vector3
 	 */
@@ -235,7 +235,7 @@ class Vector3{
 	 * passed in vector, or null if not possible.
 	 *
 	 * @param Vector3 $v
-	 * @param float   $x
+	 * @param float $x
 	 *
 	 * @return Vector3
 	 */
@@ -262,7 +262,7 @@ class Vector3{
 	 * passed in vector, or null if not possible.
 	 *
 	 * @param Vector3 $v
-	 * @param float   $y
+	 * @param float $y
 	 *
 	 * @return Vector3
 	 */
@@ -289,7 +289,7 @@ class Vector3{
 	 * passed in vector, or null if not possible.
 	 *
 	 * @param Vector3 $v
-	 * @param float   $z
+	 * @param float $z
 	 *
 	 * @return Vector3
 	 */

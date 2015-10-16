@@ -30,7 +30,7 @@ class FormattedCommandAlias extends Command{
 	private $formatStrings = [];
 
 	/**
-	 * @param string   $alias
+	 * @param string $alias
 	 * @param string[] $formatStrings
 	 */
 	public function __construct($alias, array $formatStrings){
@@ -70,7 +70,7 @@ class FormattedCommandAlias extends Command{
 
 	/**
 	 * @param string $formatString
-	 * @param array  $args
+	 * @param array $args
 	 *
 	 * @return string
 	 * @throws \InvalidArgumentException

@@ -25,7 +25,6 @@ use pocketmine\command\CommandSender;
 use pocketmine\event\TimingsHandler;
 use pocketmine\event\TranslationContainer;
 
-
 class TimingsCommand extends VanillaCommand{
 
 	public static $timingStart = 0;
@@ -122,7 +121,6 @@ class TimingsCommand extends VanillaCommand{
 
 					return true;
 				}
-
 
 				$sender->sendMessage(new TranslationContainer("pocketmine.command.timings.timingsUpload", ["http://paste.ubuntu.com/" . $matches[1] . "/"]));
 				$sender->sendMessage(new TranslationContainer("pocketmine.command.timings.timingsRead", ["http://timings.aikar.co/?url=" . $matches[1]]));

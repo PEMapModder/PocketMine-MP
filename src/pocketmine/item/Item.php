@@ -2,11 +2,11 @@
 
 /*
  *
- *  ____            _        _   __  __ _                  __  __ ____  
- * |  _ \ ___   ___| | _____| |_|  \/  (_)_ __   ___      |  \/  |  _ \ 
+ *  ____            _        _   __  __ _                  __  __ ____
+ * |  _ \ ___   ___| | _____| |_|  \/  (_)_ __   ___      |  \/  |  _ \
  * | |_) / _ \ / __| |/ / _ \ __| |\/| | | '_ \ / _ \_____| |\/| | |_) |
- * |  __/ (_) | (__|   <  __/ |_| |  | | | | | |  __/_____| |  | |  __/ 
- * |_|   \___/ \___|_|\_\___|\__|_|  |_|_|_| |_|\___|     |_|  |_|_| 
+ * |  __/ (_) | (__|   <  __/ |_| |  | | | | | |  __/_____| |  | |  __/
+ * |_|   \___/ \___|_|\_\___|\__|_|  |_|_|_| |_|\___|     |_|  |_|_|
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -33,12 +33,12 @@ use pocketmine\entity\Zombie;
 use pocketmine\inventory\Fuel;
 use pocketmine\item\enchantment\Enchantment;
 use pocketmine\level\Level;
+use pocketmine\nbt\NBT;
+use pocketmine\nbt\tag\Compound;
 use pocketmine\nbt\tag\Enum;
 use pocketmine\nbt\tag\Short;
 use pocketmine\nbt\tag\String;
 use pocketmine\Player;
-use pocketmine\nbt\tag\Compound;
-use pocketmine\nbt\NBT;
 
 class Item{
 
@@ -544,7 +544,7 @@ class Item{
 				}
 			}
 		}
-		
+
 		self::initCreativeItems();
 	}
 
@@ -770,7 +770,6 @@ class Item{
 		self::addCreativeItem(Item::get(Item::CARPET, 9));
 		self::addCreativeItem(Item::get(Item::CARPET, 8));
 
-
 		self::addCreativeItem(Item::get(Item::ANVIL, 0));
 		self::addCreativeItem(Item::get(Item::ANVIL, 4));
 		self::addCreativeItem(Item::get(Item::ANVIL, 8));
@@ -810,7 +809,6 @@ class Item{
 		self::addCreativeItem(Item::get(Item::SPAWN_EGG, Squid::NETWORK_ID));
 
 		self::addCreativeItem(Item::get(Item::SNOWBALL));
-
 
 		//Seeds
 		self::addCreativeItem(Item::get(Item::SUGARCANE, 0));
@@ -951,7 +949,7 @@ class Item{
 			$this->name = $this->block->getName();
 		}
 	}
-	
+
 	public function setCompoundTag($tags){
 		if($tags instanceof Compound){
 			$this->setNamedTag($tags);
@@ -959,7 +957,7 @@ class Item{
 			$this->tags = $tags;
 			$this->cachedNBT = null;
 		}
-		
+
 		return $this;
 	}
 
@@ -969,7 +967,7 @@ class Item{
 	public function getCompoundTag(){
 		return $this->tags;
 	}
-	
+
 	public function hasCompoundTag(){
 		return $this->tags !== "" and $this->tags !== null;
 	}
@@ -1203,7 +1201,7 @@ class Item{
 
 		return null;
 	}
-	
+
 	public function getNamedTag(){
 		if(!$this->hasCompoundTag()){
 			return null;
@@ -1327,7 +1325,7 @@ class Item{
 	}
 
 	final public function __toString(){
-		return "Item " . $this->name . " (" . $this->id . ":" . ($this->meta === null ? "?" : $this->meta) . ")x" . $this->count . ($this->hasCompoundTag() ? " tags:0x".bin2hex($this->getCompoundTag()) : "");
+		return "Item " . $this->name . " (" . $this->id . ":" . ($this->meta === null ? "?" : $this->meta) . ")x" . $this->count . ($this->hasCompoundTag() ? " tags:0x" . bin2hex($this->getCompoundTag()) : "");
 	}
 
 	public function getDestroySpeed(Block $block, Player $player){

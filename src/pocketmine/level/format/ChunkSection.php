@@ -38,9 +38,9 @@ interface ChunkSection{
 	public function getBlockId($x, $y, $z);
 
 	/**
-	 * @param int $x  0-15
-	 * @param int $y  0-15
-	 * @param int $z  0-15
+	 * @param int $x 0-15
+	 * @param int $y 0-15
+	 * @param int $z 0-15
 	 * @param int $id 0-255
 	 */
 	public function setBlockId($x, $y, $z, $id);
@@ -55,9 +55,9 @@ interface ChunkSection{
 	public function getBlockData($x, $y, $z);
 
 	/**
-	 * @param int $x    0-15
-	 * @param int $y    0-15
-	 * @param int $z    0-15
+	 * @param int $x 0-15
+	 * @param int $y 0-15
+	 * @param int $z 0-15
 	 * @param int $data 0-15
 	 */
 	public function setBlockData($x, $y, $z, $data);
@@ -87,11 +87,11 @@ interface ChunkSection{
 	public function getFullBlock($x, $y, $z);
 
 	/**
-	 * @param int $x       0-15
-	 * @param int $y       0-15
-	 * @param int $z       0-15
+	 * @param int $x 0-15
+	 * @param int $y 0-15
+	 * @param int $z 0-15
 	 * @param int $blockId , if null, do not change
-	 * @param int $meta    0-15, if null, do not change
+	 * @param int $meta 0-15, if null, do not change
 	 *
 	 * @return bool
 	 */
@@ -107,9 +107,9 @@ interface ChunkSection{
 	public function getBlockSkyLight($x, $y, $z);
 
 	/**
-	 * @param int $x     0-15
-	 * @param int $y     0-15
-	 * @param int $z     0-15
+	 * @param int $x 0-15
+	 * @param int $y 0-15
+	 * @param int $z 0-15
 	 * @param int $level 0-15
 	 */
 	public function setBlockSkyLight($x, $y, $z, $level);
@@ -124,9 +124,9 @@ interface ChunkSection{
 	public function getBlockLight($x, $y, $z);
 
 	/**
-	 * @param int $x     0-15
-	 * @param int $y     0-15
-	 * @param int $z     0-15
+	 * @param int $x 0-15
+	 * @param int $y 0-15
+	 * @param int $z 0-15
 	 * @param int $level 0-15
 	 */
 	public function setBlockLight($x, $y, $z, $level);

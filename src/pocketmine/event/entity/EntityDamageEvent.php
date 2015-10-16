@@ -58,8 +58,8 @@ class EntityDamageEvent extends EntityEvent implements Cancellable{
 
 
 	/**
-	 * @param Entity    $entity
-	 * @param int       $cause
+	 * @param Entity $entity
+	 * @param int $cause
 	 * @param int|int[] $damage
 	 *
 	 * @throws \Exception
@@ -121,7 +121,7 @@ class EntityDamageEvent extends EntityEvent implements Cancellable{
 
 	/**
 	 * @param float $damage
-	 * @param int   $type
+	 * @param int $type
 	 *
 	 * @throws \UnexpectedValueException
 	 */

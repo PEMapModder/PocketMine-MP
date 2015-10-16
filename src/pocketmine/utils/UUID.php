@@ -53,7 +53,7 @@ class UUID{
 	 * Creates an UUID from an hexadecimal representation
 	 *
 	 * @param string $uuid
-	 * @param int    $version
+	 * @param int $version
 	 * @return UUID
 	 */
 	public static function fromString($uuid, $version = null){
@@ -64,7 +64,7 @@ class UUID{
 	 * Creates an UUID from a binary representation
 	 *
 	 * @param string $uuid
-	 * @param int    $version
+	 * @param int $version
 	 * @return UUID
 	 */
 	public static function fromBinary($uuid, $version = null){

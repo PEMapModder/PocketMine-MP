@@ -37,9 +37,9 @@ class BaseTransaction implements Transaction{
 
 	/**
 	 * @param Inventory $inventory
-	 * @param int       $slot
-	 * @param Item      $sourceItem
-	 * @param Item      $targetItem
+	 * @param int $slot
+	 * @param Item $sourceItem
+	 * @param Item $targetItem
 	 */
 	public function __construct(Inventory $inventory, $slot, Item $sourceItem, Item $targetItem){
 		$this->inventory = $inventory;

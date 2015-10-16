@@ -21,7 +21,6 @@
 
 namespace pocketmine\command\defaults;
 
-
 use pocketmine\command\CommandSender;
 use pocketmine\entity\Effect;
 use pocketmine\entity\InstantEffect;
@@ -118,7 +117,6 @@ class EffectCommand extends VanillaCommand{
 			$player->addEffect($effect);
 			self::broadcastCommandMessage($sender, new TranslationContainer("%commands.effect.success", [$effect->getName(), $effect->getId(), $effect->getAmplifier(), $player->getDisplayName(), $effect->getDuration() / 20]));
 		}
-
 
 		return true;
 	}

@@ -44,7 +44,7 @@ class TimingsHandler{
 	private $violations = 0;
 
 	/**
-	 * @param string         $name
+	 * @param string $name
 	 * @param TimingsHandler $parent
 	 */
 	public function __construct($name, TimingsHandler $parent = null){

@@ -35,7 +35,7 @@ class SpawnChangeEvent extends LevelEvent{
 	private $previousSpawn;
 
 	/**
-	 * @param Level    $level
+	 * @param Level $level
 	 * @param Position $previousSpawn
 	 */
 	public function __construct(Level $level, Position $previousSpawn){

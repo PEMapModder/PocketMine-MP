@@ -30,7 +30,7 @@ class EntityCombustByEntityEvent extends EntityCombustEvent{
 	/**
 	 * @param Entity $combuster
 	 * @param Entity $combustee
-	 * @param int    $duration
+	 * @param int $duration
 	 */
 	public function __construct(Entity $combuster, Entity $combustee, $duration){
 		parent::__construct($combustee, $duration);

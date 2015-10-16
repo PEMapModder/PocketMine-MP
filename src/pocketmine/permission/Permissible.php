@@ -46,7 +46,7 @@ interface Permissible extends ServerOperator{
 	/**
 	 * @param Plugin $plugin
 	 * @param string $name
-	 * @param bool   $value
+	 * @param bool $value
 	 *
 	 * @return PermissionAttachment
 	 */

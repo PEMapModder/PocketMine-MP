@@ -17,7 +17,7 @@ namespace pocketmine\katana;
 * Sends a packet to redirect a player if the current server can't handle them.
 */
 
-class RedirectEngine extends KatanaModule {
+class RedirectEngine extends KatanaModule{
 	public $onFull = false;
 	public $onThreshold = 18;
 
@@ -28,25 +28,25 @@ class RedirectEngine extends KatanaModule {
 	private $dnsTTL = 0;
 	private $lastDNSRefresh = 0;
 
-	public function init() {
+	public function init(){
 		parent::setName("redirect");
 		parent::writeLoaded();
 
 		$destination = parent::getKatana()->getProperty("redirect.destination", "play.myserver.com:19132");
-		if(count($targets = explode(":", $destination)) !== 2) {
+		if(count($targets = explode(":", $destination)) !== 2){
 			parent::getKatana()->console->katana("Invalid redirect destination (" . $destination . ").", "warning");
 			$targets = ["play.myserver.com", "19132"];
 		}
 
-		if(filter_var($targets[0], FILTER_VALIDATE_IP)) {
+		if(filter_var($targets[0], FILTER_VALIDATE_IP)){
 			$this->ip = $targets[0];
-		} else {
+		}else{
 			$this->dns = $targets[0];
 		}
 
-		if(intval($targets[1]) === 0) {
+		if(intval($targets[1]) === 0){
 			parent::getKatana()->console->katana("Invalid port (" . $targets[1] . ").", "warning");
-		} else {
+		}else{
 			$this->port = intval($targets[1]);
 		}
 
@@ -55,8 +55,8 @@ class RedirectEngine extends KatanaModule {
 		$this->dnsTTL = intval(parent::getKatana()->getProperty("redirect.dns-ttl", 300));
 	}
 
-	public function getIP() {
-		if(time() > ($this->lastDNSRefresh + $this->dnsTTL)) {
+	public function getIP(){
+		if(time() > ($this->lastDNSRefresh + $this->dnsTTL)){
 			parent::getKatana()->console->katana("Refreshed DNS for player redirection", "debug");
 			$this->ip = gethostbyname($this->dns);
 			$this->lastDNSRefresh = time();
@@ -65,7 +65,7 @@ class RedirectEngine extends KatanaModule {
 		return $this->ip;
 	}
 
-	public function getPort() {
+	public function getPort(){
 		return $this->port;
 	}
 }

@@ -72,7 +72,6 @@ class QueryRegenerateEvent extends ServerEvent{
 		$this->whitelist = $server->hasWhitelist() ? "on" : "off";
 		$this->port = $server->getPort();
 		$this->ip = $server->getIp();
-
 	}
 
 	/**

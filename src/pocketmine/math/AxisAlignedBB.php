@@ -276,7 +276,6 @@ class AxisAlignedBB{
 
 		$vector = null;
 
-
 		if($v1 !== null and ($vector === null or $pos1->distanceSquared($v1) < $pos1->distanceSquared($vector))){
 			$vector = $v1;
 		}

@@ -31,7 +31,7 @@ class RemoteServerCommandEvent extends ServerCommandEvent{
 
 	/**
 	 * @param CommandSender $sender
-	 * @param string        $command
+	 * @param string $command
 	 */
 	public function __construct(CommandSender $sender, $command){
 		parent::__construct($sender, $command);

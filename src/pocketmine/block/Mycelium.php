@@ -15,7 +15,7 @@
  *
  * @author PocketMine Team
  * @link http://www.pocketmine.net/
- * 
+ *
  *
 */
 
@@ -30,10 +30,9 @@ use pocketmine\Server;
 
 class Mycelium extends Solid{
 
-	protected $id = self::MYCELIUM;
 
 	public function __construct(){
-
+		parent::__construct(self::MYCELIUM);
 	}
 
 	public function getName(){

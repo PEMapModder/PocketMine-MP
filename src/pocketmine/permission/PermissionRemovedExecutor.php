@@ -21,7 +21,6 @@
 
 namespace pocketmine\permission;
 
-
 interface PermissionRemovedExecutor{
 
 	/**

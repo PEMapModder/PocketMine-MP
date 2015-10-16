@@ -31,7 +31,6 @@ class ProjectileHitEvent extends EntityEvent{
 	 */
 	public function __construct(Projectile $entity){
 		$this->entity = $entity;
-
 	}
 
 	/**

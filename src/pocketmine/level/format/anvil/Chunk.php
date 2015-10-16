@@ -163,7 +163,7 @@ class Chunk extends BaseChunk{
 	}
 
 	/**
-	 * @param string        $data
+	 * @param string $data
 	 * @param LevelProvider $provider
 	 *
 	 * @return Chunk
@@ -186,7 +186,7 @@ class Chunk extends BaseChunk{
 	}
 
 	/**
-	 * @param string        $data
+	 * @param string $data
 	 * @param LevelProvider $provider
 	 *
 	 * @return Chunk
@@ -244,7 +244,6 @@ class Chunk extends BaseChunk{
 
 		$nbt->Entities = new Enum("Entities", $entities);
 		$nbt->Entities->setTagType(NBT::TAG_Compound);
-
 
 		$tiles = [];
 		foreach($this->getTiles() as $tile){
@@ -308,7 +307,6 @@ class Chunk extends BaseChunk{
 		$nbt->Entities = new Enum("Entities", $entities);
 		$nbt->Entities->setTagType(NBT::TAG_Compound);
 
-
 		$tiles = [];
 		foreach($this->getTiles() as $tile){
 			$tile->saveNBT();
@@ -335,8 +333,8 @@ class Chunk extends BaseChunk{
 	}
 
 	/**
-	 * @param int           $chunkX
-	 * @param int           $chunkZ
+	 * @param int $chunkX
+	 * @param int $chunkZ
 	 * @param LevelProvider $provider
 	 *
 	 * @return Chunk

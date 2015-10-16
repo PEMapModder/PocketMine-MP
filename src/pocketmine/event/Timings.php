@@ -21,7 +21,6 @@
 
 namespace pocketmine\event;
 
-
 use pocketmine\entity\Entity;
 use pocketmine\network\protocol\DataPacket;
 use pocketmine\Player;
@@ -153,7 +152,6 @@ abstract class Timings{
 		self::$schedulerAsyncTimer = new TimingsHandler("** Scheduler - Async Tasks");
 
 		self::$playerCommandTimer = new TimingsHandler("** playerCommand");
-
 	}
 
 	/**

@@ -40,7 +40,7 @@ class PermissionAttachment{
 	private $plugin;
 
 	/**
-	 * @param Plugin      $plugin
+	 * @param Plugin $plugin
 	 * @param Permissible $permissible
 	 *
 	 * @throws PluginException
@@ -119,7 +119,7 @@ class PermissionAttachment{
 
 	/**
 	 * @param string|Permission $name
-	 * @param bool              $value
+	 * @param bool $value
 	 */
 	public function setPermission($name, $value){
 		$name = $name instanceof Permission ? $name->getName() : $name;

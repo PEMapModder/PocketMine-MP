@@ -34,7 +34,7 @@ class PlayerRespawnEvent extends PlayerEvent{
 	protected $position;
 
 	/**
-	 * @param Player   $player
+	 * @param Player $player
 	 * @param Position $position
 	 */
 	public function __construct(Player $player, Position $position){

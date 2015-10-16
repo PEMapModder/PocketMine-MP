@@ -32,7 +32,6 @@ class AsyncWorker extends Worker{
 
 		global $store;
 		$store = [];
-
 	}
 
 	public function start($options = PTHREADS_INHERIT_NONE){

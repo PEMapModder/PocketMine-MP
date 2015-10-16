@@ -122,10 +122,10 @@ class ScriptPluginLoader implements PluginLoader{
 	}
 
 	/**
-	 * @param PluginBase        $plugin
+	 * @param PluginBase $plugin
 	 * @param PluginDescription $description
-	 * @param string            $dataFolder
-	 * @param string            $file
+	 * @param string $dataFolder
+	 * @param string $file
 	 */
 	private function initPlugin(PluginBase $plugin, PluginDescription $description, $dataFolder, $file){
 		$plugin->init($this, $this->server, $description, $dataFolder, $file);

@@ -21,10 +21,7 @@
 
 namespace pocketmine\command\defaults;
 
-
 use pocketmine\command\CommandSender;
-use pocketmine\entity\Effect;
-use pocketmine\entity\InstantEffect;
 use pocketmine\event\TranslationContainer;
 use pocketmine\item\enchantment\Enchantment;
 use pocketmine\utils\TextFormat;
@@ -78,7 +75,6 @@ class EnchantCommand extends VanillaCommand{
 
 		$item->addEnchantment($enchantment);
 		$player->getInventory()->setItemInHand($item);
-
 
 		self::broadcastCommandMessage($sender, new TranslationContainer("%commands.enchant.success"));
 		return true;

@@ -85,7 +85,7 @@ class RakLibInterface implements ServerInstance, AdvancedSourceInterface{
 		if($this->rakLib->isTerminated()){
 			$info = $this->rakLib->getTerminationInfo();
 			$this->network->unregisterInterface($this);
-			\ExceptionHandler::handler(E_ERROR, "RakLib Thread crashed [".$info["scope"]."]: " . (isset($info["message"]) ? $info["message"] : ""), $info["file"], $info["line"]);
+			\ExceptionHandler::handler(E_ERROR, "RakLib Thread crashed [" . $info["scope"] . "]: " . (isset($info["message"]) ? $info["message"] : ""), $info["file"], $info["line"]);
 		}
 
 		return $work;
@@ -169,17 +169,16 @@ class RakLibInterface implements ServerInstance, AdvancedSourceInterface{
 	}
 
 	public function notifyACK($identifier, $identifierACK){
-
 	}
 
 	public function setName($name){
 		$info = $this->server->getQueryInformation();
 
 		$this->interface->sendOption("name",
-			"MCPE;".addcslashes($name, ";") .";".
-			Info::CURRENT_PROTOCOL.";".
-			\pocketmine\MINECRAFT_VERSION_NETWORK.";".
-			$info->getPlayerCount().";".
+			"MCPE;" . addcslashes($name, ";") . ";" .
+			Info::CURRENT_PROTOCOL . ";" .
+			\pocketmine\MINECRAFT_VERSION_NETWORK . ";" .
+			$info->getPlayerCount() . ";" .
 			$info->getMaxPlayerCount()
 		);
 	}
@@ -219,7 +218,8 @@ class RakLibInterface implements ServerInstance, AdvancedSourceInterface{
 
 			if(!$immediate and !$needACK and $packet::NETWORK_ID !== ProtocolInfo::BATCH_PACKET
 				and Network::$BATCH_THRESHOLD >= 0
-				and strlen($packet->buffer) >= Network::$BATCH_THRESHOLD){
+				and strlen($packet->buffer) >= Network::$BATCH_THRESHOLD
+			){
 				$this->server->batchPackets([$player], [$packet], true, $packet->getChannel());
 				return null;
 			}

@@ -25,7 +25,6 @@ use pocketmine\entity\Entity;
 use pocketmine\event\entity\EntityInventoryChangeEvent;
 use pocketmine\event\inventory\InventoryOpenEvent;
 use pocketmine\item\Item;
-use pocketmine\network\Network;
 use pocketmine\network\protocol\ContainerSetContentPacket;
 use pocketmine\network\protocol\ContainerSetSlotPacket;
 use pocketmine\Player;
@@ -52,10 +51,10 @@ abstract class BaseInventory implements Inventory{
 
 	/**
 	 * @param InventoryHolder $holder
-	 * @param InventoryType   $type
-	 * @param Item[]          $items
-	 * @param int             $overrideSize
-	 * @param string          $overrideTitle
+	 * @param InventoryType $type
+	 * @param Item[] $items
+	 * @param int $overrideSize
+	 * @param string $overrideTitle
 	 */
 	public function __construct(InventoryHolder $holder, InventoryType $type, array $items = [], $overrideSize = null, $overrideTitle = null){
 		$this->holder = $holder;
@@ -125,7 +124,7 @@ abstract class BaseInventory implements Inventory{
 					$this->clear($i);
 				}
 			}else{
-				if (!$this->setItem($i, $items[$i])){
+				if(!$this->setItem($i, $items[$i])){
 					$this->clear($i);
 				}
 			}
@@ -249,7 +248,7 @@ abstract class BaseInventory implements Inventory{
 		$itemSlots = [];
 		foreach($slots as $slot){
 			if(!($slot instanceof Item)){
-				throw new \InvalidArgumentException("Expected Item[], got ".gettype($slot));
+				throw new \InvalidArgumentException("Expected Item[], got " . gettype($slot));
 			}
 			if($slot->getId() !== 0 and $slot->getCount() > 0){
 				$itemSlots[] = clone $slot;
@@ -309,7 +308,7 @@ abstract class BaseInventory implements Inventory{
 		$itemSlots = [];
 		foreach($slots as $slot){
 			if(!($slot instanceof Item)){
-				throw new \InvalidArgumentException("Expected Item[], got ".gettype($slot));
+				throw new \InvalidArgumentException("Expected Item[], got " . gettype($slot));
 			}
 			if($slot->getId() !== 0 and $slot->getCount() > 0){
 				$itemSlots[] = clone $slot;
@@ -440,7 +439,7 @@ abstract class BaseInventory implements Inventory{
 	}
 
 	/**
-	 * @param int             $index
+	 * @param int $index
 	 * @param Player|Player[] $target
 	 */
 	public function sendSlot($index, $target){

@@ -27,7 +27,7 @@ class TranslationContainer extends TextContainer{
 	protected $params = [];
 
 	/**
-	 * @param string   $text
+	 * @param string $text
 	 * @param string[] $params
 	 */
 	public function __construct($text, array $params = []){
@@ -53,7 +53,7 @@ class TranslationContainer extends TextContainer{
 	}
 
 	/**
-	 * @param int    $i
+	 * @param int $i
 	 * @param string $str
 	 */
 	public function setParameter($i, $str){

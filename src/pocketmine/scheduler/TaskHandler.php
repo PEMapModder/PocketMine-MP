@@ -50,10 +50,10 @@ class TaskHandler{
 
 	/**
 	 * @param string $timingName
-	 * @param Task   $task
-	 * @param int    $taskId
-	 * @param int    $delay
-	 * @param int    $period
+	 * @param Task $task
+	 * @param int $taskId
+	 * @param int $delay
+	 * @param int $period
 	 */
 	public function __construct($timingName, Task $task, $taskId, $delay = -1, $period = -1){
 		$this->task = $task;

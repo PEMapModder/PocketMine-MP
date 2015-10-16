@@ -34,8 +34,8 @@ abstract class MetadataStore{
 	/**
 	 * Adds a metadata value to an object.
 	 *
-	 * @param mixed         $subject
-	 * @param string        $metadataKey
+	 * @param mixed $subject
+	 * @param string $metadataKey
 	 * @param MetadataValue $newMetadataValue
 	 *
 	 * @throws \Exception
@@ -60,7 +60,7 @@ abstract class MetadataStore{
 	 * Returns all metadata values attached to an object. If multiple
 	 * have attached metadata, each will value will be included.
 	 *
-	 * @param mixed  $subject
+	 * @param mixed $subject
 	 * @param string $metadataKey
 	 *
 	 * @return MetadataValue[]
@@ -79,7 +79,7 @@ abstract class MetadataStore{
 	/**
 	 * Tests to see if a metadata attribute has been set on an object.
 	 *
-	 * @param mixed  $subject
+	 * @param mixed $subject
 	 * @param string $metadataKey
 	 *
 	 * @return bool
@@ -93,7 +93,7 @@ abstract class MetadataStore{
 	/**
 	 * Removes a metadata item owned by a plugin from a subject.
 	 *
-	 * @param mixed  $subject
+	 * @param mixed $subject
 	 * @param string $metadataKey
 	 * @param Plugin $owningPlugin
 	 *
@@ -130,7 +130,7 @@ abstract class MetadataStore{
 	 * unique data from the subject with a metadataKey.
 	 *
 	 * @param Metadatable $subject
-	 * @param string      $metadataKey
+	 * @param string $metadataKey
 	 *
 	 * @return string
 	 *

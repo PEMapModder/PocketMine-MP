@@ -45,7 +45,6 @@ use pocketmine\command\ConsoleCommandSender;
 use pocketmine\command\PluginIdentifiableCommand;
 use pocketmine\command\SimpleCommandMap;
 use pocketmine\entity\Arrow;
-use pocketmine\entity\Attribute;
 use pocketmine\entity\Effect;
 use pocketmine\entity\Entity;
 use pocketmine\entity\FallingSand;
@@ -126,7 +125,6 @@ use pocketmine\utils\TextFormat;
 use pocketmine\utils\TextWrapper;
 use pocketmine\utils\Utils;
 use pocketmine\utils\UUID;
-use pocketmine\utils\VersionString;
 
 /**
  * The class that manages everything
@@ -273,7 +271,7 @@ class Server{
 	/** @var Katana */
 	private $katana;
 
-	public function getKatana() {
+	public function getKatana(){
 		return $this->katana;
 	}
 
@@ -748,7 +746,7 @@ class Server{
 	 */
 	public function getOfflinePlayerData($name){
 		$name = strtolower($name);
-		if($this->katana->getProperty("console.save-player.data", false)) {
+		if($this->katana->getProperty("console.save-player.data", false)){
 			$path = $this->getDataPath() . "players/";
 			if(file_exists($path . "$name.dat")){
 				try{
@@ -806,16 +804,18 @@ class Server{
 		$this->saveOfflinePlayerData($name, $nbt);
 
 		return $nbt;
-
 	}
 
 	/**
-	 * @param string   $name
+	 * @param string $name
 	 * @param Compound $nbtTag
 	 * @param bool $async
+	 * @return bool
 	 */
 	public function saveOfflinePlayerData($name, Compound $nbtTag, $async = false){
-		if(!$this->katana->getProperty("console.save-player-data", false)) return false;
+		if(!$this->katana->getProperty("console.save-player-data", false)){
+			return false;
+		}
 		$nbt = new NBT(NBT::BIG_ENDIAN);
 		try{
 			$nbt->setData($nbtTag);
@@ -831,6 +831,7 @@ class Server{
 				$this->logger->logException($e);
 			}
 		}
+		return null;
 	}
 
 	/**
@@ -980,7 +981,7 @@ class Server{
 
 	/**
 	 * @param Level $level
-	 * @param bool  $forceUnload
+	 * @param bool $forceUnload
 	 *
 	 * @return bool
 	 */
@@ -1058,8 +1059,8 @@ class Server{
 	 * Generates a new level if it does not exists
 	 *
 	 * @param string $name
-	 * @param int    $seed
-	 * @param array  $options
+	 * @param int $seed
+	 * @param array $options
 	 *
 	 * @return bool
 	 */
@@ -1167,7 +1168,7 @@ class Server{
 
 	/**
 	 * @param string $variable
-	 * @param mixed  $defaultValue
+	 * @param mixed $defaultValue
 	 *
 	 * @return mixed
 	 */
@@ -1194,7 +1195,7 @@ class Server{
 
 	/**
 	 * @param string $variable
-	 * @param int    $defaultValue
+	 * @param int $defaultValue
 	 *
 	 * @return int
 	 */
@@ -1209,14 +1210,14 @@ class Server{
 
 	/**
 	 * @param string $variable
-	 * @param int    $value
+	 * @param int $value
 	 */
 	public function setConfigInt($variable, $value){
 		$this->properties->set($variable, (int) $value);
 	}
 
 	/**
-	 * @param string  $variable
+	 * @param string $variable
 	 * @param boolean $defaultValue
 	 *
 	 * @return boolean
@@ -1245,7 +1246,7 @@ class Server{
 
 	/**
 	 * @param string $variable
-	 * @param bool   $value
+	 * @param bool $value
 	 */
 	public function setConfigBool($variable, $value){
 		$this->properties->set($variable, $value == true ? "1" : "0");
@@ -1384,11 +1385,11 @@ class Server{
 	}
 
 	/**
-	 * @param \ClassLoader    $autoloader
+	 * @param \ClassLoader $autoloader
 	 * @param \ThreadedLogger $logger
-	 * @param string          $filePath
-	 * @param string          $dataPath
-	 * @param string          $pluginPath
+	 * @param string $filePath
+	 * @param string $dataPath
+	 * @param string $pluginPath
 	 */
 	public function __construct(\ClassLoader $autoloader, \ThreadedLogger $logger, $filePath, $dataPath, $pluginPath){
 		self::$instance = $this;
@@ -1411,7 +1412,7 @@ class Server{
 
 		$this->katana = new Katana($this);
 
-		if($this->katana->getProperty("console.save-player-data", false) && !file_exists($dataPath . "players/")) {
+		if($this->katana->getProperty("console.save-player-data", false) && !file_exists($dataPath . "players/")){
 			mkdir($dataPath . "players/", 0777);
 		}
 
@@ -1563,6 +1564,7 @@ class Server{
 		foreach((array) $this->getProperty("worlds", []) as $name => $worldSetting){
 			if($this->loadLevel($name) === false){
 				$seed = $this->getProperty("worlds.$name.seed", time());
+				$options = [];
 				if(count($options) > 0){
 					$options = [
 						"preset" => implode(":", $options),
@@ -1590,7 +1592,6 @@ class Server{
 			$this->setDefaultLevel($this->getLevelByName($default));
 		}
 
-
 		$this->properties->save(true);
 
 		if(!($this->getDefaultLevel() instanceof Level)){
@@ -1610,7 +1611,7 @@ class Server{
 	}
 
 	/**
-	 * @param string        $message
+	 * @param string $message
 	 * @param Player[]|null $recipients
 	 *
 	 * @return int
@@ -1629,7 +1630,7 @@ class Server{
 	}
 
 	/**
-	 * @param string        $tip
+	 * @param string $tip
 	 * @param Player[]|null $recipients
 	 *
 	 * @return int
@@ -1653,9 +1654,9 @@ class Server{
 
 		return count($recipients);
 	}
-	
+
 	/**
-	 * @param string        $popup
+	 * @param string $popup
 	 * @param Player[]|null $recipients
 	 *
 	 * @return int
@@ -1671,7 +1672,7 @@ class Server{
 				}
 			}
 		}
-		
+
 		/** @var Player[] $recipients */
 		foreach($recipients as $recipient){
 			$recipient->sendPopup($popup);
@@ -1707,7 +1708,7 @@ class Server{
 	/**
 	 * Broadcasts a Minecraft packet to a list of players
 	 *
-	 * @param Player[]   $players
+	 * @param Player[] $players
 	 * @param DataPacket $packet
 	 */
 	public static function broadcastPacket(array $players, DataPacket $packet){
@@ -1729,10 +1730,10 @@ class Server{
 	/**
 	 * Broadcasts a list of packets in a batch to a list of players
 	 *
-	 * @param Player[]            $players
+	 * @param Player[] $players
 	 * @param DataPacket[]|string $packets
-	 * @param bool                 $forceSync
-	 * @param int                 $channel
+	 * @param bool $forceSync
+	 * @param int $channel
 	 */
 	public function batchPackets(array $players, array $packets, $forceSync = false, $channel = 0){
 		Timings::$playerNetworkTimer->startTiming();
@@ -1760,7 +1761,7 @@ class Server{
 			$task = new CompressBatchedTask($str, $targets, $this->networkCompressionLevel, $channel);
 			$this->getScheduler()->scheduleAsyncTask($task);
 		}else{
-			$this->broadcastPacketsCallback(zlib_encode($str, ZLIB_ENCODING_DEFLATE, $this->networkCompressionLevel), $targets, $channel);
+			$this->broadcastPacketsCallback(zlib_encode($str, ZLIB_ENCODING_DEFLATE, $this->networkCompressionLevel), $targets);
 		}
 
 		Timings::$playerNetworkTimer->stopTiming();
@@ -1831,7 +1832,7 @@ class Server{
 	 * Executes a command from a CommandSender
 	 *
 	 * @param CommandSender $sender
-	 * @param string        $commandLine
+	 * @param string $commandLine
 	 *
 	 * @return bool
 	 *
@@ -1845,7 +1846,6 @@ class Server{
 		if($this->commandMap->dispatch($sender, $commandLine)){
 			return true;
 		}
-
 
 		$sender->sendMessage(new TranslationContainer(TextFormat::RED . "%commands.generic.notFound"));
 
@@ -1954,7 +1954,6 @@ class Server{
 			$this->logger->emergency("Crashed while crashing, killing process");
 			@kill(getmypid());
 		}
-
 	}
 
 	public function getQueryInformation(){
@@ -2058,7 +2057,6 @@ class Server{
 		}
 
 		$this->logger->emergency($this->getLanguage()->translateString("pocketmine.crash.submit", [$dump->getPath()]));
-
 
 		if($this->getProperty("auto-report.enabled", true) !== false){
 			$report = true;
@@ -2216,14 +2214,14 @@ class Server{
 						if($r > $this->baseTickRate){
 							$level->tickRateCounter = $level->getTickRate();
 						}
-						$this->getLogger()->debug("Raising level \"".$level->getName()."\" tick rate to ".$level->getTickRate()." ticks");
+						$this->getLogger()->debug("Raising level \"" . $level->getName() . "\" tick rate to " . $level->getTickRate() . " ticks");
 					}elseif($tickMs >= 50){
 						if($level->getTickRate() === $this->baseTickRate){
 							$level->setTickRate(max($this->baseTickRate + 1, min($this->autoTickRateLimit, floor($tickMs / 50))));
-							$this->getLogger()->debug("Level \"".$level->getName()."\" took ".round($tickMs, 2)."ms, setting tick rate to ".$level->getTickRate()." ticks");
+							$this->getLogger()->debug("Level \"" . $level->getName() . "\" took " . round($tickMs, 2) . "ms, setting tick rate to " . $level->getTickRate() . " ticks");
 						}elseif(($tickMs / $level->getTickRate()) >= 50 and $level->getTickRate() < $this->autoTickRateLimit){
 							$level->setTickRate($level->getTickRate() + 1);
-							$this->getLogger()->debug("Level \"".$level->getName()."\" took ".round($tickMs, 2)."ms, setting tick rate to ".$level->getTickRate()." ticks");
+							$this->getLogger()->debug("Level \"" . $level->getName() . "\" took " . round($tickMs, 2) . "ms, setting tick rate to " . $level->getTickRate() . " ticks");
 						}
 						$level->tickRateCounter = $level->getTickRate();
 					}
@@ -2289,9 +2287,9 @@ class Server{
 		}
 
 		$d = Utils::getRealMemoryUsage();
-		
+
 		$u = Utils::getMemoryUsage(true);
-		$usage = round(($u[0] / 1024) / 1024, 2) . "/" . round(($d[0] / 1024) / 1024, 2) . "/" . round(($u[1] / 1024) / 1024, 2) . "/".round(($u[2] / 1024) / 1024, 2)." MB @ " . Utils::getThreadCount() . " threads";
+		$usage = round(($u[0] / 1024) / 1024, 2) . "/" . round(($d[0] / 1024) / 1024, 2) . "/" . round(($u[1] / 1024) / 1024, 2) . "/" . round(($u[2] / 1024) / 1024, 2) . " MB @ " . Utils::getThreadCount() . " threads";
 
 		echo "\x1b]0;" . $this->getName() . " " .
 			$this->getPocketMineVersion() .
@@ -2307,7 +2305,7 @@ class Server{
 
 	/**
 	 * @param string $address
-	 * @param int    $port
+	 * @param int $port
 	 * @param string $payload
 	 *
 	 * TODO: move this to Network

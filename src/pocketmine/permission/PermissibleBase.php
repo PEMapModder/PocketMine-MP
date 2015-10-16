@@ -112,7 +112,6 @@ class PermissibleBase implements Permissible{
 		}else{
 			return Permission::$DEFAULT_PERMISSION === Permission::DEFAULT_TRUE or ($this->isOp() and Permission::$DEFAULT_PERMISSION === Permission::DEFAULT_OP) or (!$this->isOp() and Permission::$DEFAULT_PERMISSION === Permission::DEFAULT_NOT_OP);
 		}
-
 	}
 
 	/**
@@ -120,7 +119,7 @@ class PermissibleBase implements Permissible{
 	 *
 	 * @param Plugin $plugin
 	 * @param string $name
-	 * @param bool   $value
+	 * @param bool $value
 	 *
 	 * @return PermissionAttachment
 	 *
@@ -161,9 +160,7 @@ class PermissibleBase implements Permissible{
 			}
 
 			$this->recalculatePermissions();
-
 		}
-
 	}
 
 	public function recalculatePermissions(){
@@ -199,8 +196,8 @@ class PermissibleBase implements Permissible{
 	}
 
 	/**
-	 * @param bool[]               $children
-	 * @param bool                 $invert
+	 * @param bool[] $children
+	 * @param bool $invert
 	 * @param PermissionAttachment $attachment
 	 */
 	private function calculateChildPermissions(array $children, $invert, $attachment){

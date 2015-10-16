@@ -82,7 +82,7 @@ class ServerScheduler{
 	 * Submits an asynchronous task to a specific Worker in the Pool
 	 *
 	 * @param AsyncTask $task
-	 * @param int       $worker
+	 * @param int $worker
 	 *
 	 * @return void
 	 */
@@ -102,7 +102,7 @@ class ServerScheduler{
 
 	/**
 	 * @param Task $task
-	 * @param int  $delay
+	 * @param int $delay
 	 *
 	 * @return null|TaskHandler
 	 */
@@ -112,7 +112,7 @@ class ServerScheduler{
 
 	/**
 	 * @param Task $task
-	 * @param int  $period
+	 * @param int $period
 	 *
 	 * @return null|TaskHandler
 	 */
@@ -122,8 +122,8 @@ class ServerScheduler{
 
 	/**
 	 * @param Task $task
-	 * @param int  $delay
-	 * @param int  $period
+	 * @param int $delay
+	 * @param int $period
 	 *
 	 * @return null|TaskHandler
 	 */

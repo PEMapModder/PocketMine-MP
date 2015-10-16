@@ -69,9 +69,9 @@ abstract class Command{
 	public $timings;
 
 	/**
-	 * @param string   $name
-	 * @param string   $description
-	 * @param string   $usageMessage
+	 * @param string $name
+	 * @param string $description
+	 * @param string $usageMessage
 	 * @param string[] $aliases
 	 */
 	public function __construct($name, $description = "", $usageMessage = null, array $aliases = []){
@@ -87,8 +87,8 @@ abstract class Command{
 
 	/**
 	 * @param CommandSender $sender
-	 * @param string        $commandLabel
-	 * @param string[]      $args
+	 * @param string $commandLabel
+	 * @param string[] $args
 	 *
 	 * @return mixed
 	 */
@@ -283,13 +283,13 @@ abstract class Command{
 
 	/**
 	 * @param CommandSender $source
-	 * @param string        $message
-	 * @param bool          $sendToSource
+	 * @param string $message
+	 * @param bool $sendToSource
 	 */
 	public static function broadcastCommandMessage(CommandSender $source, $message, $sendToSource = true){
 		if($message instanceof TextContainer){
 			$m = clone $message;
-			$result = "[".$source->getName().": ".($source->getServer()->getLanguage()->get($m->getText()) !== $m->getText() ? "%" : "") . $m->getText() ."]";
+			$result = "[" . $source->getName() . ": " . ($source->getServer()->getLanguage()->get($m->getText()) !== $m->getText() ? "%" : "") . $m->getText() . "]";
 
 			$users = $source->getServer()->getPluginManager()->getPermissionSubscriptions(Server::BROADCAST_CHANNEL_ADMINISTRATIVE);
 			$colored = TextFormat::GRAY . TextFormat::ITALIC . $result;

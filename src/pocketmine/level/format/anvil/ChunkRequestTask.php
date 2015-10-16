@@ -27,7 +27,6 @@ use pocketmine\scheduler\AsyncTask;
 use pocketmine\Server;
 use pocketmine\tile\Spawnable;
 
-
 class ChunkRequestTask extends AsyncTask{
 
 	protected $levelId;
@@ -65,12 +64,10 @@ class ChunkRequestTask extends AsyncTask{
 		$blockLight = $chunk->getBlockLightArray();
 		$skyLight = $chunk->getBlockSkyLightArray();
 
-
 		$orderedIds = "";
 		$orderedData = "";
 		$orderedSkyLight = "";
 		$orderedLight = "";
-
 
 		for($x = 0; $x < 16; ++$x){
 			for($z = 0; $z < 16; ++$z){

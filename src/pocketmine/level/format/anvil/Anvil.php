@@ -33,7 +33,6 @@ use pocketmine\tile\Spawnable;
 use pocketmine\utils\BinaryStream;
 use pocketmine\utils\ChunkException;
 
-
 class Anvil extends McRegion{
 
 	/** @var RegionLoader[] */
@@ -123,8 +122,8 @@ class Anvil extends McRegion{
 	}
 
 	/**
-	 * @param int  $chunkX
-	 * @param int  $chunkZ
+	 * @param int $chunkX
+	 * @param int $chunkZ
 	 * @param bool $create
 	 *
 	 * @return Chunk
