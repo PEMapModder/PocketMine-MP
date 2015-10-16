@@ -2636,66 +2636,7 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 
 				switch($packet->event){
 					case 9: //Eating
-						$items = [ //TODO: move this to item classes
-							Item::APPLE => 4,
-							Item::MUSHROOM_STEW => 10,
-							Item::BEETROOT_SOUP => 10,
-							Item::BREAD => 5,
-							Item::RAW_PORKCHOP => 3,
-							Item::COOKED_PORKCHOP => 8,
-							Item::RAW_BEEF => 3,
-							Item::STEAK => 8,
-							Item::COOKED_CHICKEN => 6,
-							Item::RAW_CHICKEN => 2,
-							Item::MELON_SLICE => 2,
-							Item::GOLDEN_APPLE => 10,
-							Item::PUMPKIN_PIE => 8,
-							Item::CARROT => 4,
-							Item::POTATO => 1,
-							Item::BAKED_POTATO => 6,
-							Item::COOKIE => 2,
-							Item::COOKED_FISH => [
-								0 => 5,
-								1 => 6
-							],
-							Item::RAW_FISH => [
-								0 => 2,
-								1 => 2,
-								2 => 1,
-								3 => 1
-							],
-						];
-						$slot = $this->inventory->getItemInHand();
-						if($this->getHealth() < $this->getMaxHealth() and isset($items[$slot->getId()])){
-							$this->server->getPluginManager()->callEvent($ev = new PlayerItemConsumeEvent($this, $slot));
-							if($ev->isCancelled()){
-								$this->inventory->sendContents($this);
-								break;
-							}
-
-							$pk = new EntityEventPacket();
-							$pk->eid = $this->getId();
-							$pk->event = EntityEventPacket::USE_ITEM;
-							$this->dataPacket($pk);
-							Server::broadcastPacket($this->getViewers(), $pk);
-
-							$amount = $items[$slot->getId()];
-							if(is_array($amount)){
-								$amount = isset($amount[$slot->getDamage()]) ? $amount[$slot->getDamage()] : 0;
-							}
-                            $ev = new EntityRegainHealthEvent($this, $amount, EntityRegainHealthEvent::CAUSE_EATING);
-							$this->heal($ev->getAmount(), $ev);
-
-							--$slot->count;
-							$this->inventory->setItemInHand($slot);
-							if($slot->getId() === Item::MUSHROOM_STEW or $slot->getId() === Item::BEETROOT_SOUP){
-								$this->inventory->addItem(Item::get(Item::BOWL, 0, 1));
-							}elseif($slot->getId() === Item::RAW_FISH and $slot->getDamage() === 3){ //Pufferfish
-								//$this->addEffect(Effect::getEffect(Effect::HUNGER)->setAmplifier(2)->setDuration(15 * 20));
-								$this->addEffect(Effect::getEffect(Effect::NAUSEA)->setAmplifier(1)->setDuration(15 * 20));
-								$this->addEffect(Effect::getEffect(Effect::POISON)->setAmplifier(3)->setDuration(60 * 20));
-							}
-						}
+						$this->eatFoodInHand();
 						break;
 				}
 				break;
@@ -3745,28 +3686,4 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 	public function isLoaderActive(){
 		return $this->isConnected();
 	}
-
-	/**
-	 * @param $chunkX
-	 * @param $chunkZ
-	 * @param $payload
-	 *
-	 * @return DataPacket
-	 */
-	public static function getChunkCacheFromData($chunkX, $chunkZ, $payload, $ordering = FullChunkDataPacket::ORDER_COLUMNS){
-		$pk = new FullChunkDataPacket();
-		$pk->chunkX = $chunkX;
-		$pk->chunkZ = $chunkZ;
-		$pk->order = $ordering;
-		$pk->data = $payload;
-		$pk->encode();
-
-		$batch = new BatchPacket();
-		$batch->payload = zlib_encode(Binary::writeInt(strlen($pk->getBuffer())) . $pk->getBuffer(), ZLIB_ENCODING_DEFLATE, Server::getInstance()->networkCompressionLevel);
-
-		$batch->encode();
-		$batch->isEncoded = true;
-		return $batch;
-	}
-
 }
