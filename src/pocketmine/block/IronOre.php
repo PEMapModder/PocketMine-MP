@@ -43,7 +43,7 @@ class IronOre extends Solid{
 	}
 
 	public function getDrops(Item $item){
-		if($item->isPickaxe() >= 3){
+		if($item->isPickaxe() >= Tool::TIER_STONE){
 			return [
 				[Item::IRON_ORE, 0, 1],
 			];

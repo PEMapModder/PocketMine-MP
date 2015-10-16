@@ -36,7 +36,11 @@ class Stone extends Solid{
 	protected $id = self::STONE;
 
 	public function __construct($meta = 0){
+<<<<<<< HEAD
 		parent::__construct(self::STONE, $meta);
+=======
+		$this->meta = $meta;
+>>>>>>> base/mcpe-0.12
 	}
 
 	public function getHardness(){

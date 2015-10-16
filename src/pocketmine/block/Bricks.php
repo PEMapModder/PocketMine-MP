@@ -47,7 +47,7 @@ class Bricks extends Solid{
 	}
 
 	public function getDrops(Item $item){
-		if($item->isPickaxe() >= 1){
+		if($item->isPickaxe() >= Tool::TIER_WOODEN){
 			return [
 				[Item::BRICKS_BLOCK, 0, 1],
 			];
