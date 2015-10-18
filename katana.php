@@ -2,11 +2,13 @@
 
 chdir(__DIR__);
 
-if(is_file("build/Katana.phar")){
-	unlink("build/Katana.phar");
+if(is_file("../build/Katana.phar")){
+	unlink("../build/Katana.phar");
+}else{
+	@mkdir("../build");
 }
 
-$phar = new Phar("build/Katana.phar");
+$phar = new Phar("../build/Katana.phar");
 $phar->setSignatureAlgorithm(Phar::SHA1);
 $phar->setStub('<?php define("pocketmine\\\\PATH", "phar://". __FILE__ ."/"); require_once("phar://". __FILE__ ."/src/pocketmine/PocketMine.php");  __HALT_COMPILER();');
 $phar->startBuffering();
