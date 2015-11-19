@@ -1684,6 +1684,10 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 
 					break;
 				}
+				
+				if($this->closed){ // some external code from PlayerPreloginEvent handlerse might have caused this
+					break;
+				}
 
 				if(!$this->server->isWhitelisted(strtolower($this->getName()))){
 					$this->close($this->getLeaveMessage(), "Server is white-listed");
