@@ -32,26 +32,27 @@ class PardonCommand extends VanillaCommand{
 		parent::__construct(
 			$name,
 			"%pocketmine.command.unban.player.description",
-			"%commands.unban.usage"
+			"%commands.unban.usage",
+			["unban"]
 		);
 		$this->setPermission("pocketmine.command.unban.player");
 	}
 
 	public function execute(CommandSender $sender, $currentAlias, array $args){
 		if(!$this->testPermission($sender)){
-			return true;
+			return \true;
 		}
 
-		if(count($args) !== 1){
+		if(\count($args) !== 1){
 			$sender->sendMessage(new TranslationContainer("commands.generic.usage", [$this->usageMessage]));
 
-			return false;
+			return \false;
 		}
 
 		$sender->getServer()->getNameBans()->remove($args[0]);
 
 		Command::broadcastCommandMessage($sender, new TranslationContainer("commands.unban.success", [$args[0]]));
 
-		return true;
+		return \true;
 	}
 }

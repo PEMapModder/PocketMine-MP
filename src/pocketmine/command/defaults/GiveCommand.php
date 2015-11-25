@@ -36,20 +36,21 @@ class GiveCommand extends VanillaCommand{
 		parent::__construct(
 			$name,
 			"%pocketmine.command.give.description",
-			"%pocketmine.command.give.usage"
+			"%pocketmine.command.give.usage",
+			["i"]
 		);
 		$this->setPermission("pocketmine.command.give");
 	}
 
 	public function execute(CommandSender $sender, $currentAlias, array $args){
 		if(!$this->testPermission($sender)){
-			return true;
+			return \true;
 		}
 
-		if(count($args) < 2){
+		if(\count($args) < 2){
 			$sender->sendMessage(new TranslationContainer("commands.generic.usage", [$this->usageMessage]));
 
-			return true;
+			return \true;
 		}
 
 		$player = $sender->getServer()->getPlayer($args[0]);
@@ -62,17 +63,17 @@ class GiveCommand extends VanillaCommand{
 		}
 
 		if(isset($args[3])){
-			$tags = $exception = null;
-			$data = implode(" ", array_slice($args, 3));
+			$tags = $exception = \null;
+			$data = \implode(" ", \array_slice($args, 3));
 			try{
 				$tags = NBT::parseJSON($data);
 			}catch (\Exception $ex){
 				$exception = $ex;
 			}
 
-			if(!($tags instanceof Compound) or $exception !== null){
-				$sender->sendMessage(new TranslationContainer("commands.give.tagError", [$exception !== null ? $exception->getMessage() : "Invalid tag conversion"]));
-				return true;
+			if(!($tags instanceof Compound) or $exception !== \null){
+				$sender->sendMessage(new TranslationContainer("commands.give.tagError", [$exception !== \null ? $exception->getMessage() : "Invalid tag conversion"]));
+				return \true;
 			}
 
 			$item->setNamedTag($tags);
@@ -82,7 +83,7 @@ class GiveCommand extends VanillaCommand{
 			if($item->getId() === 0){
 				$sender->sendMessage(new TranslationContainer(TextFormat::RED . "%commands.give.item.notFound", [$args[1]]));
 
-				return true;
+				return \true;
 			}
 
 			//TODO: overflow
@@ -90,7 +91,7 @@ class GiveCommand extends VanillaCommand{
 		}else{
 			$sender->sendMessage(new TranslationContainer(TextFormat::RED . "%commands.generic.player.notFound"));
 
-			return true;
+			return \true;
 		}
 
 		Command::broadcastCommandMessage($sender, new TranslationContainer("%commands.give.success", [
@@ -98,6 +99,6 @@ class GiveCommand extends VanillaCommand{
 			(string) $item->getCount(),
 			$player->getName()
 		]));
-		return true;
+		return \true;
 	}
 }
