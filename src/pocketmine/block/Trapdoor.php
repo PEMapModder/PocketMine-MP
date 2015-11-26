@@ -1,5 +1,4 @@
 <?php
-
 /*
  *
  *  ____            _        _   __  __ _                  __  __ ____  
@@ -18,40 +17,29 @@
  * 
  *
 */
-
 namespace pocketmine\block;
-
 use pocketmine\item\Item;
 use pocketmine\item\Tool;
 use pocketmine\math\AxisAlignedBB;
+use pocketmine\math\Vector3;
 use pocketmine\Player;
-
 class Trapdoor extends Transparent{
-
 	protected $id = self::TRAPDOOR;
-
 	public function __construct($meta = 0){
 		$this->meta = $meta;
 	}
-
 	public function getName(){
 		return "Wooden Trapdoor";
 	}
-
 	public function getHardness(){
 		return 3;
 	}
-
 	public function canBeActivated(){
 		return true;
 	}
-
 	protected function recalculateBoundingBox(){
-
 		$damage = $this->getDamage();
-
 		$f = 0.1875;
-
 		if(($damage & 0x08) > 0){
 			$bb = new AxisAlignedBB(
 				$this->x,
@@ -71,7 +59,6 @@ class Trapdoor extends Transparent{
 				$this->z + 1
 			);
 		}
-
 		if(($damage & 0x04) > 0){
 			if(($damage & 0x03) === 0){
 				$bb->setBounds(
@@ -113,43 +100,40 @@ class Trapdoor extends Transparent{
 				);
 			}
 		}
-
 		return $bb;
 	}
-
 	public function place(Item $item, Block $block, Block $target, $face, $fx, $fy, $fz, Player $player = null){
 		if(($target->isTransparent() === false or $target->getId() === self::SLAB) and $face !== 0 and $face !== 1){
-			$faces = [
-				2 => 0,
-				3 => 1,
-				4 => 2,
-				5 => 3,
-			];
+			$faces = [];
+			switch($faces){
+				case 0x0:
+					return Vector3::SIDE_SOUTH;
+				case 0x1:
+					return Vector3::SIDE_NORTH;
+				case 0x2:
+					return Vector3::SIDE_EAST;
+				case 0x3:
+					return Vector3::SIDE_WEST;
+			}
 			$this->meta = $faces[$face] & 0x03;
 			if($fy > 0.5){
 				$this->meta |= 0x08;
 			}
 			$this->getLevel()->setBlock($block, $this, true, true);
-
 			return true;
 		}
-
 		return false;
 	}
-
 	public function getDrops(Item $item){
 		return [
 			[$this->id, 0, 1],
 		];
 	}
-
 	public function onActivate(Item $item, Player $player = null){
 		$this->meta ^= 0x04;
 		$this->getLevel()->setBlock($this, $this, true);
-		$this->level->addSound(new DoorSound($this));
 		return true;
 	}
-
 	public function getToolType(){
 		return Tool::TYPE_AXE;
 	}
