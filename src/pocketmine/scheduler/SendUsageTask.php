@@ -25,6 +25,7 @@ use pocketmine\network\protocol\Info;
 use pocketmine\Server;
 use pocketmine\utils\Utils;
 use pocketmine\utils\VersionString;
+use pocketmine\utils\UUID;
 
 class SendUsageTask extends AsyncTask{
 
@@ -39,9 +40,9 @@ class SendUsageTask extends AsyncTask{
 		$endpoint = "http://" . $server->getProperty("anonymous-statistics.host", "stats.pocketmine.net") . "/";
 
 		$data = [];
-		$data["uniqueServerId"] = $server->getServerUniqueId();
-		$data["uniqueMachineId"] = Utils::getMachineUniqueId();
-		$data["uniqueRequestId"] = Utils::dataToUUID($server->getServerUniqueId(), microtime(true));
+		$data["uniqueServerId"] = $server->getServerUniqueId()->toString();
+		$data["uniqueMachineId"] = Utils::getMachineUniqueId()->toString();
+		$data["uniqueRequestId"] = UUID::fromData($server->getServerUniqueId(), microtime(true))->toString();
 
 		switch($type){
 			case self::TYPE_OPEN:
@@ -52,7 +53,7 @@ class SendUsageTask extends AsyncTask{
 				$data["server"] = [
 					"port" => $server->getPort(),
 					"software" => $server->getName(),
-					"fullVersion" => $version->get(true),
+					"fullVersion" => $version->get(\true),
 					"version" => $version->get(),
 					"build" => $version->getBuild(),
 					"api" => $server->getApiVersion(),
@@ -118,7 +119,7 @@ class SendUsageTask extends AsyncTask{
 					"historyList" => array_values($playerList)
 				];
 
-				$info = Utils::getMemoryUsage(true);
+				$info = Utils::getMemoryUsage(\true);
 				$data["system"] = [
 					"mainMemory" => $info[0],
 					"totalMemory" => $info[1],

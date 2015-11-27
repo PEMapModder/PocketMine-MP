@@ -422,7 +422,7 @@ abstract class Entity extends Location implements Metadatable{
 	}
 
 	public static function registerEntity($className, $force = false){
-		$class = new \ReflectionClass($className);
+		$class = new ReflectionClass($className);
 		if(is_a($className, Entity::class, true) and !$class->isAbstract()){
 			if($className::NETWORK_ID !== -1){
 				self::$knownEntities[$className::NETWORK_ID] = $className;
@@ -597,9 +597,9 @@ abstract class Entity extends Location implements Metadatable{
 	 */
     public function attack($damage, EntityDamageEvent $source){
         if($this->hasEffect(Effect::FIRE_RESISTANCE)
-            and $source->getCause() === EntityDamageEvent::CAUSE_FIRE
-            and $source->getCause() === EntityDamageEvent::CAUSE_FIRE_TICK
-            and $source->getCause() === EntityDamageEvent::CAUSE_LAVA){
+            and ($source->getCause() === EntityDamageEvent::CAUSE_FIRE
+            or $source->getCause() === EntityDamageEvent::CAUSE_FIRE_TICK
+            or $source->getCause() === EntityDamageEvent::CAUSE_LAVA)){
             $source->setCancelled();
         }
 
@@ -1591,7 +1591,7 @@ abstract class Entity extends Location implements Metadatable{
 	}
 
 	public function __toString(){
-		return (new \ReflectionClass($this))->getShortName() . "(" . $this->getId() . ")";
+		return (new ReflectionClass($this))->getShortName() . "(" . $this->getId() . ")";
 	}
 
 }

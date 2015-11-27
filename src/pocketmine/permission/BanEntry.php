@@ -26,15 +26,15 @@ class BanEntry{
 
 	private $name;
 	/** @var \DateTime */
-	private $creationDate = null;
+	private $creationDate = \null;
 	private $source = "(Unknown)";
 	/** @var \DateTime */
-	private $expirationDate = null;
+	private $expirationDate = \null;
 	private $reason = "Banned by an operator.";
 
 	public function __construct($name){
 		$this->name = strtolower($name);
-		$this->creationDate = new \DateTime();
+		$this->creationDate = new DateTime();
 	}
 
 	public function getName(){
@@ -69,9 +69,9 @@ class BanEntry{
 	}
 
 	public function hasExpired(){
-		$now = new \DateTime();
+		$now = new DateTime();
 
-		return $this->expirationDate === null ? false : $this->expirationDate < $now;
+		return $this->expirationDate === \null ? \false : $this->expirationDate < $now;
 	}
 
 	public function getReason(){
@@ -90,7 +90,7 @@ class BanEntry{
 		$str .= "|";
 		$str .= $this->getSource();
 		$str .= "|";
-		$str .= $this->getExpires() === null ? "Forever" : $this->getExpires()->format(self::$format);
+		$str .= $this->getExpires() === \null ? "Forever" : $this->getExpires()->format(self::$format);
 		$str .= "|";
 		$str .= $this->getReason();
 
@@ -104,7 +104,7 @@ class BanEntry{
 	 */
 	public static function fromString($str){
 		if(strlen($str) < 2){
-			return null;
+			return \null;
 		}else{
 			$str = explode("|", trim($str));
 			$entry = new BanEntry(trim(array_shift($str)));

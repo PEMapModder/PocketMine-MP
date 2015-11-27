@@ -41,7 +41,7 @@ class FormattedCommandAlias extends Command{
 	public function execute(CommandSender $sender, $commandLabel, array $args){
 
 		$commands = [];
-		$result = false;
+		$result = \false;
 
 		foreach($this->formatStrings as $formatString){
 			try{
@@ -57,7 +57,7 @@ class FormattedCommandAlias extends Command{
 					}
 				}
 
-				return false;
+				return \false;
 			}
 		}
 
@@ -77,7 +77,7 @@ class FormattedCommandAlias extends Command{
 	 */
 	private function buildCommand($formatString, array $args){
 		$index = strpos($formatString, '$');
-		while($index !== false){
+		while($index !== \false){
 			$start = $index;
 			if($index > 0 and $formatString{$start - 1} === "\\"){
 				$formatString = substr($formatString, 0, $start - 1) . substr($formatString, $start);
@@ -85,9 +85,9 @@ class FormattedCommandAlias extends Command{
 				continue;
 			}
 
-			$required = false;
+			$required = \false;
 			if($formatString{$index + 1} == '$'){
-				$required = true;
+				$required = \true;
 
 				++$index;
 			}
@@ -101,28 +101,28 @@ class FormattedCommandAlias extends Command{
 			}
 
 			if($argStart === $index){
-				throw new \InvalidArgumentException("Invalid replacement token");
+				throw new InvalidArgumentException("Invalid replacement token");
 			}
 
 			$position = intval(substr($formatString, $argStart, $index));
 
 			if($position === 0){
-				throw new \InvalidArgumentException("Invalid replacement token");
+				throw new InvalidArgumentException("Invalid replacement token");
 			}
 
 			--$position;
 
-			$rest = false;
+			$rest = \false;
 
 			if($index < strlen($formatString) and $formatString{$index} === "-"){
-				$rest = true;
+				$rest = \true;
 				++$index;
 			}
 
 			$end = $index;
 
 			if($required and $position >= count($args)){
-				throw new \InvalidArgumentException("Missing required argument " . ($position + 1));
+				throw new InvalidArgumentException("Missing required argument " . ($position + 1));
 			}
 
 			$replacement = "";

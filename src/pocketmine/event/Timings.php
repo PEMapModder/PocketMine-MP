@@ -170,9 +170,9 @@ abstract class Timings{
 	 */
 	public static function getPluginTaskTimings(TaskHandler $task, $period){
 		$ftask = $task->getTask();
-		if($ftask instanceof PluginTask and $ftask->getOwner() !== null){
+		if($ftask instanceof PluginTask and $ftask->getOwner() !== \null){
 			$plugin = $ftask->getOwner()->getDescription()->getFullName();
-		}elseif($task->timingName !== null){
+		}elseif($task->timingName !== \null){
 			$plugin = "Scheduler";
 		}else{
 			$plugin = "Unknown";
@@ -201,7 +201,7 @@ abstract class Timings{
 	 * @return TimingsHandler
 	 */
 	public static function getEntityTimings(Entity $entity){
-		$entityType = (new \ReflectionClass($entity))->getShortName();
+		$entityType = (new ReflectionClass($entity))->getShortName();
 		if(!isset(self::$entityTypeTimingMap[$entityType])){
 			if($entity instanceof Player){
 				self::$entityTypeTimingMap[$entityType] = new TimingsHandler("** tickEntity - EntityPlayer", self::$tickEntityTimer);
@@ -219,7 +219,7 @@ abstract class Timings{
 	 * @return TimingsHandler
 	 */
 	public static function getTileEntityTimings(Tile $tile){
-		$tileType = (new \ReflectionClass($tile))->getShortName();
+		$tileType = (new ReflectionClass($tile))->getShortName();
 		if(!isset(self::$tileEntityTypeTimingMap[$tileType])){
 			self::$tileEntityTypeTimingMap[$tileType] = new TimingsHandler("** tickTileEntity - " . $tileType, self::$tickTileEntityTimer);
 		}
@@ -234,7 +234,7 @@ abstract class Timings{
 	 */
 	public static function getReceiveDataPacketTimings(DataPacket $pk){
 		if(!isset(self::$packetReceiveTimingMap[$pk::NETWORK_ID])){
-			$pkName = (new \ReflectionClass($pk))->getShortName();
+			$pkName = (new ReflectionClass($pk))->getShortName();
 			self::$packetReceiveTimingMap[$pk::NETWORK_ID] = new TimingsHandler("** receivePacket - " . $pkName . " [0x" . dechex($pk::NETWORK_ID) . "]", self::$playerNetworkReceiveTimer);
 		}
 
@@ -249,7 +249,7 @@ abstract class Timings{
 	 */
 	public static function getSendDataPacketTimings(DataPacket $pk){
 		if(!isset(self::$packetSendTimingMap[$pk::NETWORK_ID])){
-			$pkName = (new \ReflectionClass($pk))->getShortName();
+			$pkName = (new ReflectionClass($pk))->getShortName();
 			self::$packetSendTimingMap[$pk::NETWORK_ID] = new TimingsHandler("** sendPacket - " . $pkName . " [0x" . dechex($pk::NETWORK_ID) . "]", self::$playerNetworkTimer);
 		}
 

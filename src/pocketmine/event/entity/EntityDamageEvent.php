@@ -26,7 +26,7 @@ use pocketmine\entity\Entity;
 use pocketmine\event\Cancellable;
 
 class EntityDamageEvent extends EntityEvent implements Cancellable{
-	public static $handlerList = null;
+	public static $handlerList = \null;
 
 	const MODIFIER_BASE = 0;
 	const MODIFIER_ARMOR = 1;
@@ -78,7 +78,7 @@ class EntityDamageEvent extends EntityEvent implements Cancellable{
 		$this->originals = $this->modifiers;
 
 		if(!isset($this->modifiers[self::MODIFIER_BASE])){
-			throw new \InvalidArgumentException("BASE Damage modifier missing");
+			throw new InvalidArgumentException("BASE Damage modifier missing");
 		}
 
 		if($entity->hasEffect(Effect::DAMAGE_RESISTANCE)){

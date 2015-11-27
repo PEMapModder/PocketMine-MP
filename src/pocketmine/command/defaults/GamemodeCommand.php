@@ -34,20 +34,21 @@ class GamemodeCommand extends VanillaCommand{
 		parent::__construct(
 			$name,
 			"%pocketmine.command.gamemode.description",
-			"%commands.gamemode.usage"
+			"%commands.gamemode.usage",
+			["gm"]
 		);
 		$this->setPermission("pocketmine.command.gamemode");
 	}
 
 	public function execute(CommandSender $sender, $currentAlias, array $args){
 		if(!$this->testPermission($sender)){
-			return true;
+			return \true;
 		}
 
 		if(count($args) === 0){
 			$sender->sendMessage(new TranslationContainer("commands.generic.usage", [$this->usageMessage]));
 
-			return false;
+			return \false;
 		}
 
 		$gameMode = Server::getGamemodeFromString($args[0]);
@@ -55,21 +56,21 @@ class GamemodeCommand extends VanillaCommand{
 		if($gameMode === -1){
 			$sender->sendMessage("Unknown game mode");
 
-			return true;
+			return \true;
 		}
 
 		$target = $sender;
 		if(isset($args[1])){
 			$target = $sender->getServer()->getPlayer($args[1]);
-			if($target === null){
+			if($target === \null){
 				$sender->sendMessage(new TranslationContainer(TextFormat::RED . "%commands.generic.player.notFound"));
 
-				return true;
+				return \true;
 			}
 		}elseif(!($sender instanceof Player)){
 			$sender->sendMessage(new TranslationContainer("commands.generic.usage", [$this->usageMessage]));
 
-			return true;
+			return \true;
 		}
 
 		$target->setGamemode($gameMode);
@@ -84,6 +85,6 @@ class GamemodeCommand extends VanillaCommand{
 			}
 		}
 
-		return true;
+		return \true;
 	}
 }

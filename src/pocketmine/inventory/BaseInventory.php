@@ -249,7 +249,7 @@ abstract class BaseInventory implements Inventory{
 		$itemSlots = [];
 		foreach($slots as $slot){
 			if(!($slot instanceof Item)){
-				throw new \InvalidArgumentException("Expected Item[], got ".gettype($slot));
+				throw new InvalidArgumentException("Expected Item[], got ".gettype($slot));
 			}
 			if($slot->getId() !== 0 and $slot->getCount() > 0){
 				$itemSlots[] = clone $slot;
@@ -309,7 +309,7 @@ abstract class BaseInventory implements Inventory{
 		$itemSlots = [];
 		foreach($slots as $slot){
 			if(!($slot instanceof Item)){
-				throw new \InvalidArgumentException("Expected Item[], got ".gettype($slot));
+				throw new InvalidArgumentException("Expected Item[], got ".gettype($slot));
 			}
 			if($slot->getId() !== 0 and $slot->getCount() > 0){
 				$itemSlots[] = clone $slot;
@@ -385,7 +385,7 @@ abstract class BaseInventory implements Inventory{
 	}
 
 	public function setMaxStackSize($size){
-		$this->setMaxStackSize($size);
+		$this->maxStackSize = (int) $size;
 	}
 
 	public function open(Player $who){

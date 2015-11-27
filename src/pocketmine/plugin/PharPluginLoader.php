@@ -55,13 +55,13 @@ class PharPluginLoader implements PluginLoader{
 			$this->server->getLogger()->info($this->server->getLanguage()->translateString("pocketmine.plugin.load", [$description->getFullName()]));
 			$dataFolder = dirname($file) . DIRECTORY_SEPARATOR . $description->getName();
 			if(file_exists($dataFolder) and !is_dir($dataFolder)){
-				throw new \InvalidStateException("Projected dataFolder '" . $dataFolder . "' for " . $description->getName() . " exists and is not a directory");
+				throw new InvalidStateException("Projected dataFolder '" . $dataFolder . "' for " . $description->getName() . " exists and is not a directory");
 			}
 			$file = "phar://$file";
 			$className = $description->getMain();
 			$this->server->getLoader()->addPath("$file/src");
 
-			if(class_exists($className, true)){
+			if(class_exists($className, \true)){
 				$plugin = new $className();
 				$this->initPlugin($plugin, $description, $dataFolder, $file);
 
@@ -71,7 +71,7 @@ class PharPluginLoader implements PluginLoader{
 			}
 		}
 
-		return null;
+		return \null;
 	}
 
 	/**
@@ -82,7 +82,7 @@ class PharPluginLoader implements PluginLoader{
 	 * @return PluginDescription
 	 */
 	public function getPluginDescription($file){
-		$phar = new \Phar($file);
+		$phar = new Phar($file);
 		if(isset($phar["plugin.yml"])){
 			$pluginYml = $phar["plugin.yml"];
 			if($pluginYml instanceof \PharFileInfo){
@@ -90,7 +90,7 @@ class PharPluginLoader implements PluginLoader{
 			}
 		}
 
-		return null;
+		return \null;
 	}
 
 	/**
@@ -120,7 +120,7 @@ class PharPluginLoader implements PluginLoader{
 		if($plugin instanceof PluginBase and !$plugin->isEnabled()){
 			$this->server->getLogger()->info($this->server->getLanguage()->translateString("pocketmine.plugin.enable", [$plugin->getDescription()->getFullName()]));
 
-			$plugin->setEnabled(true);
+			$plugin->setEnabled(\true);
 
 			$this->server->getPluginManager()->callEvent(new PluginEnableEvent($plugin));
 		}
@@ -135,7 +135,7 @@ class PharPluginLoader implements PluginLoader{
 
 			$this->server->getPluginManager()->callEvent(new PluginDisableEvent($plugin));
 
-			$plugin->setEnabled(false);
+			$plugin->setEnabled(\false);
 		}
 	}
 }

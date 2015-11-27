@@ -33,10 +33,10 @@ class PluginDescription{
 	private $loadBefore = [];
 	private $version;
 	private $commands = [];
-	private $description = null;
+	private $description = \null;
 	private $authors = [];
-	private $website = null;
-	private $prefix = null;
+	private $website = \null;
+	private $prefix = \null;
 	private $order = PluginLoadOrder::POSTWORLD;
 
 	/**
@@ -48,7 +48,7 @@ class PluginDescription{
 	 * @param string|array $yamlString
 	 */
 	public function __construct($yamlString){
-		$this->loadMap(!is_array($yamlString) ? \yaml_parse($yamlString) : $yamlString);
+		$this->loadMap(!is_array($yamlString) ? yaml_parse($yamlString) : $yamlString);
 	}
 
 	/**
