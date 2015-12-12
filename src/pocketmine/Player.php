@@ -1531,37 +1531,40 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 				}
 			}
 
-			if($this->isSurvival()){
-				if($this->speed->x > 0 or $this->speed->z > 0){
-					$this->incrementHungerTicks($this->isSprinting() ? 500 : 200);
-				}
-			}
-			if($this->getFood() <= 0){
-				$this->starveTicks++;
-				if($this->starveTicks > 20){
-					$this->starveTicks = 0;
-					if(!(
-							$this->server->getDifficulty() === 0 or
-							$this->server->getDifficulty() === 1 and $this->getHealth() <= 10 or
-							$this->server->getDifficulty() === 2 and $this->getHealth() <= 1
-					)){
-						$this->attack(1, new EntityDamageEvent($this, EntityDamageEvent::CAUSE_STARVATION, 1));
-					}
-				}
-			}else{
-				$this->starveTicks = 0;
-			}
-			if($this->getFood() >= 18){
-				if($this->getHealth() === $this->getMaxHealth()){
-					$this->saturationTicks = 0;
+			if($this->isSurvival() || $this->isAdventure()){
+				if($this->isSprinting()){
+					$this->incrementHungerTicks(500);
 				}else{
-					$this->saturationTicks++;
-					if($this->saturationTicks > 80){
+					$this->incrementHungerTicks(200);	
+				}
+				if($this->getFood() <= 0){
+					$this->starveTicks++;
+					if($this->starveTicks > 20){
+						$this->starveTicks = 0;
+						if(!(
+								$this->server->getDifficulty() === 0 or
+								$this->server->getDifficulty() === 1 and $this->getHealth() <= 10 or
+								$this->server->getDifficulty() === 2 and $this->getHealth() <= 1
+						)){
+							$this->attack(1, new EntityDamageEvent($this, EntityDamageEvent::CAUSE_STARVATION, 1));
+						}
+					}
+				}else{
+					$this->starveTicks = 0;
+				}
+				if($this->getFood() >= 18){
+					if($this->getHealth() === $this->getMaxHealth()){
 						$this->saturationTicks = 0;
-						$this->heal(1, new EntityRegainHealthEvent($this, 1, EntityRegainHealthEvent::CAUSE_EATING));
+					}else{
+						$this->saturationTicks++;
+						if($this->saturationTicks > 80){
+							$this->saturationTicks = 0;
+							$this->heal(1, new EntityRegainHealthEvent($this, 1, EntityRegainHealthEvent::CAUSE_EATING));
+						}
 					}
 				}
 			}
+			
 		}
 
 		$this->checkTeleportPosition();
