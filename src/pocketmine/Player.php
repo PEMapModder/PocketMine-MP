@@ -3325,6 +3325,60 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 	public function setFood($amount){
 		$this->attributes[Attribute::HUNGER]->setValue($amount)->send($this);
 	}
+	
+		
+	public function giveFood($amount){
+		$this->attributes[Attribute::HUNGER]->setValue($this->getFood() + $amount)->send($this);
+	}
+
+	public function removeFood($amount){
+		if($this->getFood() - $amount > 0){
+			$this->attributes[Attribute::HUNGER]->setValue($this->getFood() - $amount)->send($this);
+		}else{                           
+			$this->attributes[Attribute::HUNGER]->setValue(1)->send($this);			
+		}
+	}
+	
+	public function setExpLevels($amount){
+		$this->attributes[Attribute::EXPERIENCE_LEVEL]->setValue($amount)->send($this);
+	}
+
+	public function getExpLevel(){
+		return $this->attributes[Attribute::EXPERIENCE_LEVEL]->getValue();
+	}
+
+	public function giveExpLevel($amount){
+		$this->attributes[Attribute::EXPERIENCE_LEVEL]->setValue($this->getExpLevels() + $amount)->send($this);
+	}
+
+	public function removeExpLevel($amount){
+		if($this->getExpLevels() - $amount > 0){
+			$this->attributes[Attribute::EXPERIENCE_LEVEL]->setValue($this->getExpLevels() - $amount)->send($this);
+		}else{
+			$this->attributes[Attribute::EXPERIENCE_LEVEL]->setValue(0)->send($this);			
+		}
+	}
+
+	public function setExp($amount){
+		$this->attributes[Attribute::EXPERIENCE]->setValue($amount)->send($this);
+	}
+
+	public function getExp(){
+		return $this->attributes[Attribute::EXPERIENCE]->getValue();
+	}
+
+	public function giveExp($amount){
+		$this->attributes[Attribute::EXPERIENCE]->setValue($this->getExp() + $amount)->send($this);
+	}
+
+
+	public function removeExp($amount){
+		if($this->getExp() - $amount > 0){
+			$this->attributes[Attribute::EXPERIENCE]->setValue($this->getExp() - $amount)->send($this);
+		}else{
+			$this->attributes[Attribute::EXPERIENCE]->setValue(0)->send($this);			
+		}
+	}
 
 	public function attack($damage, EntityDamageEvent $source){
 		if(!$this->isAlive()){
