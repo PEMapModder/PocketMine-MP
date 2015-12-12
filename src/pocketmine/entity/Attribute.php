@@ -21,20 +21,19 @@
 
 namespace pocketmine\entity;
 
-use pocketmine\event\entity\EntityDamageEvent;
-use pocketmine\event\entity\EntityRegainHealthEvent;
-use pocketmine\network\Network;
-use pocketmine\network\protocol\MobEffectPacket;
-use pocketmine\Player;
-
-
 class Attribute{
 
-	const MAX_HEALTH = 0;
-	const MAX_HUNGER = 1;
-
-	const EXPERIENCE = 2;
-	const EXPERIENCE_LEVEL = 3;
+	const ABSORPTION = 0;
+	const SATURATION = 1;
+	const EXHAUSTION = 2;
+	const KNOCKBACK_RESISTANCE = 3;
+	const HEALTH = 4;
+	const MOVEMENT_SPEED = 5;
+	const FOLLOW_RANGE = 6;
+	const HUNGER = 7;
+	const ATTACK_DAMAGE = 8;
+	const EXPERIENCE_LEVEL = 9;
+	const EXPERIENCE = 10;
 
 	private $id;
 	protected $minValue;
@@ -42,16 +41,22 @@ class Attribute{
 	protected $defaultValue;
 	protected $currentValue;
 	protected $name;
-	protected $shouldSend;
 
 	/** @var Attribute[] */
 	protected static $attributes = [];
 
 	public static function init(){
-		self::addAttribute(self::MAX_HEALTH, "generic.health", 0, 0x7fffffff, 20, true);
-		self::addAttribute(self::MAX_HUNGER, "player.hunger", 0, 20, 20, true);
-		self::addAttribute(self::EXPERIENCE, "player.experience", 0, 1, 0, true);
-		self::addAttribute(self::EXPERIENCE_LEVEL, "player.level", 0, 24791, 0, true);
+		self::addAttribute(self::ABSORPTION, "generic.absorption", 0.00, 340282346638528859811704183484516925440.00, 0.00);
+		self::addAttribute(self::SATURATION, "player.saturation", 0.00, 20.00, 5.00);
+		self::addAttribute(self::EXHAUSTION, "player.exhaustion", 0.00, 5.00, 0.41);
+		self::addAttribute(self::KNOCKBACK_RESISTANCE, "generic.knockbackResistance", 0.00, 1.00, 0.00);
+		self::addAttribute(self::HEALTH, "generic.health", 0.00, 20.00, 20.00);
+		self::addAttribute(self::MOVEMENT_SPEED, "generic.movementSpeed", 0.00, 340282346638528859811704183484516925440.00, 0.10);
+		self::addAttribute(self::FOLLOW_RANGE, "generic.followRange", 0.00, 2048.00, 16.00);
+		self::addAttribute(self::HUNGER, "player.hunger", 0.00, 20.00, 20.00);
+		self::addAttribute(self::ATTACK_DAMAGE, "generic.attackDamage", 0.00, 340282346638528859811704183484516925440.00, 1.00);
+		self::addAttribute(self::EXPERIENCE_LEVEL, "player.level", 0.00, 24791.00, 0.00);
+		self::addAttribute(self::EXPERIENCE, "player.experience", 0.00, 1.00, 0.00);
 	}
 
 	/**
@@ -61,18 +66,20 @@ class Attribute{
 	 * @param float  $maxValue
 	 * @param float  $defaultValue
 	 * @param bool   $shouldSend
+	 *
 	 * @return Attribute
 	 */
-	public static function addAttribute($id, $name, $minValue, $maxValue, $defaultValue, $shouldSend = false){
+	public static function addAttribute($id, $name, $minValue, $maxValue, $defaultValue){
 		if($minValue > $maxValue or $defaultValue > $maxValue or $defaultValue < $minValue){
 			throw new \InvalidArgumentException("Invalid ranges: min value: $minValue, max value: $maxValue, $defaultValue: $defaultValue");
 		}
 
-		return self::$attributes[(int) $id] = new Attribute($id, $name, $minValue, $maxValue, $defaultValue, $shouldSend);
+		return self::$attributes[(int) $id] = new Attribute($id, $name, $minValue, $maxValue, $defaultValue);
 	}
 
 	/**
 	 * @param $id
+	 *
 	 * @return null|Attribute
 	 */
 	public static function getAttribute($id){
@@ -81,6 +88,7 @@ class Attribute{
 
 	/**
 	 * @param $name
+	 *
 	 * @return null|Attribute
 	 */
 	public static function getAttributeByName($name){
@@ -93,13 +101,12 @@ class Attribute{
 		return null;
 	}
 
-	private function __construct($id, $name, $minValue, $maxValue, $defaultValue, $shouldSend = false){
+	private function __construct($id, $name, $minValue, $maxValue, $defaultValue){
 		$this->id = (int) $id;
 		$this->name = (string) $name;
 		$this->minValue = (float) $minValue;
 		$this->maxValue = (float) $maxValue;
 		$this->defaultValue = (float) $defaultValue;
-		$this->shouldSend = (float) $shouldSend;
 
 		$this->currentValue = $this->defaultValue;
 	}
@@ -164,9 +171,4 @@ class Attribute{
 	public function getId(){
 		return $this->id;
 	}
-
-	public function isSyncable(){
-		return $this->shouldSend;
-	}
-
 }
