@@ -83,6 +83,7 @@ use pocketmine\level\format\FullChunk;
 use pocketmine\level\format\LevelProvider;
 use pocketmine\level\Level;
 use pocketmine\level\Location;
+use pocketmine\level\particle\CriticalParticle;
 use pocketmine\level\Position;
 use pocketmine\level\sound\LaunchSound;
 use pocketmine\math\AxisAlignedBB;
@@ -2363,8 +2364,9 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 						Item::DIAMOND_SHOVEL => 4,
 					];
 
+					$damageValue = isset($damageTable[$item->getId()]) ? $damageTable[$item->getId()] : 1;
 					$damage = [
-						EntityDamageEvent::MODIFIER_BASE => isset($damageTable[$item->getId()]) ? $damageTable[$item->getId()] : 1,
+						EntityDamageEvent::MODIFIER_BASE => $damageValue,
 					];
 
 					if(!$this->canInteract($target, 8)){
@@ -2408,6 +2410,9 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 						$damage[EntityDamageEvent::MODIFIER_ARMOR] = -floor($damage[EntityDamageEvent::MODIFIER_BASE] * $points * 0.04);
 					}
 
+					if($this->fallDistance > 0){
+						$damage[EntityDamageEvent::MODIFIER_CRITICAL] = round($damageValue * 0.5);
+					}
 					$ev = new EntityDamageByEntityEvent($this, $target, EntityDamageEvent::CAUSE_ENTITY_ATTACK, $damage);
 					if($cancelled){
 						$ev->setCancelled();
@@ -2422,6 +2427,9 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 						break;
 					}
 
+					if($ev->getDamage(EntityDamageEvent::MODIFIER_CRITICAL) > 0){
+						$this->level->addParticle(new CriticalParticle($target));
+					}
 					if($item->isTool() and $this->isSurvival()){
 						if($item->useOn($target) and $item->getDamage() >= $item->getMaxDurability()){
 							$this->inventory->setItemInHand(Item::get(Item::AIR, 0, 1));
