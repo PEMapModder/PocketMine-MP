@@ -958,7 +958,7 @@ class Item{
 			$this->clearCustomName();
 		}
 
-		if(!$this->hasCompoundTag()){
+		if(!($hadCompoundTag = $this->hasCompoundTag())){
 			$tag = new CompoundTag("", []);
 		}else{
 			$tag = $this->getNamedTag();
@@ -970,6 +970,10 @@ class Item{
 			$tag->display = new CompoundTag("display", [
 				"Name" => new StringTag("Name", $name)
 			]);
+		}
+
+		if(!$hadCompoundTag){
+			$this->setCompoundTag($tag);
 		}
 
 		return $this;
